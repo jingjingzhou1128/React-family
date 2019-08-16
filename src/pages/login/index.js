@@ -1,9 +1,15 @@
-import React, {Component} from 'react'
+import React, {Component} from 'react';
+import {HashRouter as Router, Link} from 'react-router-dom';
 
 export default class Login extends Component {
   render () {
     return (
-      <div>Login Page</div>
+      <Router>
+        <div>
+          <p>Login Page</p>
+          <Link to="/home">Home</Link>
+        </div>
+      </Router>
     )
   }
 }

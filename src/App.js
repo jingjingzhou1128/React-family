@@ -30,9 +30,9 @@
 import React, {Component} from 'react';
 import {HashRouter as Router, Route, Switch, Redirect} from 'react-router-dom';
 
-// import Layout from '@/components/Layout/index.js';
+import Layout from '@/containers/Layout/index.js';
 
-function asyncComponent (importComponent) {
+export function asyncComponent (importComponent) {
   class AsyncComponent extends Component {
     constructor (props) {
       super(props);
@@ -63,6 +63,7 @@ const App = () => {
         <Switch>
           <Redirect exact from="/" to="/login"/>
           <Route path="/login" component={asyncComponent(() => import('@/pages/login/index.js'))}/>
+          <Route path="/home" component={Layout}></Route>
           <Route path="/404" component={asyncComponent(() => import('@/pages/error/404page.js'))}/>
           <Route path="*" render={(props) => <Redirect to="/404"/>}/>
         </Switch>
