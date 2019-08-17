@@ -63,7 +63,13 @@ const App = () => {
         <Switch>
           <Redirect exact from="/" to="/login"/>
           <Route path="/login" component={asyncComponent(() => import('@/pages/login/index.js'))}/>
-          <Route path="/home" component={Layout}></Route>
+          {/* <Route path="/home" component={Layout}>
+            <Route path="home/dashboard" component={asyncComponent(() => import('@/pages/dashboard/index.js'))}></Route>
+          </Route> */}
+          <Layout>
+            <Route path="/dashboard" component={asyncComponent(() => import('@/pages/dashboard/index.js'))}></Route>
+            <Route path="/menu" component={asyncComponent(() => import('@/pages/menu/index.js'))}></Route>
+          </Layout>
           <Route path="/404" component={asyncComponent(() => import('@/pages/error/404page.js'))}/>
           <Route path="*" render={(props) => <Redirect to="/404"/>}/>
         </Switch>
