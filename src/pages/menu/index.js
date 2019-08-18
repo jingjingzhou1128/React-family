@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import {Link, Route, Switch} from 'react-router-dom'
+import {asyncComponent} from '@/App.js'
 
 export default class Menu extends Component {
   render () {
