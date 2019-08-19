@@ -4,12 +4,13 @@ import {asyncComponent} from '@/App.js'
 
 export default class Menu extends Component {
   render () {
+    let props = this.props
     return (
       <div>
         <p>Menu Page</p>
-        <Link to="/menu/menu1">menu1</Link>
+        <Link to={`${props.match.url}/menu1`}>menu1</Link>
         <Switch>
-          <Route path="/menu/menu1" component={asyncComponent(() => import('@/pages/menu/menu1/index.js'))}/>
+          <Route path={`${props.match.url}/menu1`} component={asyncComponent(() => import('@/pages/menu/menu1/index.js'))}/>
         </Switch>
       </div>
     )
