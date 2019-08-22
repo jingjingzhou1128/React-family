@@ -1,6 +1,6 @@
-import asyncComponent from '@/utils/asyncComponent'
+import {asyncComponent} from '@/utils/asyncComponent'
 
-export default contentRouterMap = [
+const contentRouterMap = [
   {
     path: '/home/dashboard',
     // isExact: false,
@@ -9,7 +9,7 @@ export default contentRouterMap = [
       icon: '',
       title: 'Dashboard'
     },
-    component: asyncComponent(() => import('@/pages/dashboard/index'))
+    component: asyncComponent(() => import('@/pages/dashboard'))
   },
   {
     path: '/home/permission',
@@ -17,7 +17,7 @@ export default contentRouterMap = [
       icon: '',
       title: 'Permission'
     },
-    component: asyncComponent(() => import('@/pages/permission/index'))
+    component: asyncComponent(() => import('@/pages/permission'))
   },
   {
     path: '/home/nest',
@@ -31,15 +31,17 @@ export default contentRouterMap = [
         meta: {
           title: 'Menu1'
         },
-        component: asyncComponent(() => import('@/pages/nest/menu1/index'))
+        component: asyncComponent(() => import('@/pages/nest/menu1'))
       },
       {
         path: '/home/nest/menu2',
         meta: {
           title: 'Menu2'
         },
-        component: asyncComponent(() => import('@/pages/nest/menu2/index'))
+        component: asyncComponent(() => import('@/pages/nest/menu2'))
       }
     ]
   }
-]
+];
+
+export default contentRouterMap;
