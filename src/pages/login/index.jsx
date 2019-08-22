@@ -7,7 +7,7 @@ export default class Login extends Component {
       <Router>
         <div>
           <p>Login Page</p>
-          <Link to="/home">Home</Link>
+          <Link to="/home/dashboard">Home</Link>
         </div>
       </Router>
     )

@@ -1,17 +1,17 @@
 import React, {Component} from 'react';
-// import {HashRouter as Router, Link, Switch, Route} from 'react-router-dom';
-import {Link} from 'react-router-dom';
-// import {asyncComponent} from '@/App.js'
+import {Link, Switch, Route} from 'react-router-dom';
+
+import contentRouterMap from '@/router/config'
 
 export default class Layout extends Component {
   render () {
-    console.log(this.props)
     return (
       <div className="app">
         <aside className="sidebar">
           <ul>
-            <li><Link to="/dashboard">Dashboard</Link></li>
-            <li><Link to="/menu">Menu</Link></li>
+            <li><Link to="/home/dashboard">Dashboard</Link></li>
+            <li><Link to="/home/nest/menu1">Menu1</Link></li>
+            <li><Link to="/home/nest/menu1">Menu2</Link></li>
           </ul>
         </aside>
         <main>
@@ -19,19 +19,26 @@ export default class Layout extends Component {
             <div>Header</div>
           </header>
           <div className="main-container">
-            {this.props.children}
+            <Switch>
+              {
+                contentRouterMap.map(route => {
+                  if (route.children) {
+                    let subRoutes = route.children.map(subRoute => {
+                      return (
+                        <Route path={route.path} Component={path.component}/>
+                      )
+                    })
+                  } else {
+                    return (
+                      <Route path={route.path} Component={path.component}/>
+                    )
+                  }
+                })
+              }
+            </Switch>
           </div>
         </main>
       </div>
-      // <Router>
-      //   <div>
-      //     <Link to="/home/dashboard">Dashboard</Link>
-      //     <p>Home</p>
-      //     <Switch>
-      //       <Route path="/home/dashboard" component={asyncComponent(() => import('@/pages/dashboard/index.js'))}/>
-      //     </Switch>
-      //   </div>
-      // </Router>
     )
   }
 }
