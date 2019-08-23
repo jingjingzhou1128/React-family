@@ -1,7 +1,9 @@
 import React from 'react';
 import {Switch, Route, Redirect} from 'react-router-dom'
+
 import {asyncComponent} from '@/utils/asyncComponent'
 import Layout from '@/containers/Layout'
+import contentRouterMap from '@/router/config'
 
 const rootRoutes = (
   <Switch>
@@ -12,6 +14,30 @@ const rootRoutes = (
     <Route path="/home" component={Layout}/>
     <Route path="/404" component={asyncComponent(() => import('@/pages/error/index'))}/>
     <Route path="*" render={() => <Redirect to="404"/>}/>
+  </Switch>
+)
+
+function getRoutes (routesMap) {
+  let routesList = []
+  for (let routes of routesMap) {
+    if (routes.children) {
+      routesList.push(...getRoutes(routes.children))
+    } else {
+      routesList.push({...routes})
+    }
+  }
+  return routesList
+}
+
+export const contentRoutes = (
+  <Switch>
+    {
+      getRoutes(contentRouterMap).map(route => {
+        return (
+          <Route key={`route${route.path}`} path={route.path} component={route.component}/>
+        )
+      })
+    }
   </Switch>
 )
 
