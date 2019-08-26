@@ -19,7 +19,7 @@ class SubMenuItem extends Component {
       >
         {
           menu.children.map(subMenu => {
-            return <SiderbarItem key={`menu${subMenu.path}`} menu={subMenu}/>
+            return <SiderbarItem key={`menu-${subMenu.path}`} menu={subMenu}/>
           })
         }
       </SubMenu>
@@ -40,7 +40,7 @@ class MenuItem extends Component {
   render () {
     const menu = this.props.menu
     return (
-      <Menu.Item key={menu.path}>
+      <Menu.Item key={`menu${menu.path}`}>
         <Link to={menu.path}>{menu.meta.title}</Link>
       </Menu.Item>
     )
@@ -58,14 +58,14 @@ export default class Sidebar extends Component {
       >
         {
           menus.map(menu => {
-            // return <SiderbarItem key={`menu${menu.path}`} menu={menu}/>
+            // return <SiderbarItem key={`menu-${menu.path}`} menu={menu}/>
             if (menu.children) {
               return (
                 <SubMenu
                   key={`menu${menu.path}`}
                   title={
                     <Link to={menu.path}>
-                      <Icon type={menu.meta.icon || "inbox"}/>
+                      <i className={menu.meta.icon}></i>
                       <span>{menu.meta.title}</span>
                     </Link>
                   }
@@ -89,7 +89,7 @@ export default class Sidebar extends Component {
               return (
                 <Menu.Item key={`menu${menu.path}`}>
                   <Link to={menu.path}>
-                    <Icon type={menu.meta.icon || "pie-chart"}></Icon>
+                    <i className={menu.meta.icon}></i>
                     <span>{menu.meta.title}</span>
                   </Link>
                 </Menu.Item>
