@@ -1,14 +1,32 @@
 import React, {Component} from 'react';
-// import {Link} from 'react-router-dom';
 import NProgress from 'nprogress';
 import 'nprogress/nprogress.css';
+import {Layout} from 'antd';
 
 import Sidebar from '@/components/Sidebar';
+import MyIcon from '@/components/MyIcon';
 
 import {contentRoutes} from '@/router';
 import contentRouterMap from '@/router/config';
 
-export default class Layout extends Component {
+const {Sider, Header, Content} = Layout;
+
+export default class AppLayout extends Component {
+  constructor (props) {
+    super(props)
+    this.state = {
+      collapsed: false
+    }
+  }
+
+  toggleCollapse () {
+    let collapsed = this.state.collapsed
+    this.setState({
+      collapsed: !collapsed
+    })
+    console.log(this.state.collapsed)
+  }
+
   nprogressStart () {
     NProgress.start()
   }
@@ -46,27 +64,24 @@ export default class Layout extends Component {
   }
   render () {
     this.nprogressStart()
+    let collapsed = this.state.collapsed
     return (
-      <div className="app">
-        <aside className="sidebar" style={{width: 256}}>
-          {/* <ul>
-            <li><Link to="/home/dashboard" replace>Dashboard</Link></li>
-            <li><Link to="/home/nest/menu1">Menu1</Link></li>
-            <li><Link to="/home/nest/menu2">Menu2</Link></li>
-          </ul> */}
+      <Layout className="app">
+        <Sider trigger={null} collapsible collapsed={collapsed}>
+          <div className="logo">Logo</div>
           <Sidebar menus={contentRouterMap} activeMenu={this.getCurrentPath()}/>
-        </aside>
-        <main>
-          <header>
-            <div>Header</div>
-          </header>
-          <div className="main-container">
+        </Sider>
+        <Layout>
+          <Header style={{background: '#fff', padding: 0}}>
+            <MyIcon type={collapsed ? 'icon-zhankai' : 'icon-shousuo'} onClick={() => {this.toggleCollapse()}}/>
+          </Header>
+          <Content>
             {
               contentRoutes
             }
-          </div>
-        </main>
-      </div>
+          </Content>
+        </Layout>
+      </Layout>
     )
   }
 }

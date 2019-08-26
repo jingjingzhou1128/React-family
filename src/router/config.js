@@ -6,7 +6,7 @@ const contentRouterMap = [
     // isExact: false,
     // isStrict: false,
     meta: {
-      icon: 'iconfont icon-dashboard',
+      icon: 'icon-dashboard',
       title: 'Dashboard'
     },
     component: asyncComponent(() => import('@/pages/dashboard'))
@@ -14,7 +14,7 @@ const contentRouterMap = [
   {
     path: '/home/permission',
     meta: {
-      icon: 'iconfont icon-shezhi',
+      icon: 'icon-shezhi',
       title: 'Permission'
     },
     component: asyncComponent(() => import('@/pages/permission'))
@@ -22,7 +22,7 @@ const contentRouterMap = [
   {
     path: '/home/nest',
     meta: {
-      icon: 'icontfont icon-zhuti',
+      icon: 'icon-zhuti',
       title: 'Nest'
     },
     children: [

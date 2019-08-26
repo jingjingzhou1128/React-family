@@ -2,7 +2,7 @@ import React from 'react';
 import {Switch, Route, Redirect} from 'react-router-dom'
 
 import {asyncComponent} from '@/utils/asyncComponent'
-import Layout from '@/containers/Layout'
+import AppLayout from '@/containers/AppLayout'
 import contentRouterMap from '@/router/config'
 
 const rootRoutes = (
@@ -11,7 +11,7 @@ const rootRoutes = (
       return (<Redirect to="/login"/>)
     }}/>
     <Route path="/login" component={asyncComponent(() => import('@/pages/login/index'))}/>
-    <Route path="/home" component={Layout}/>
+    <Route path="/home" component={AppLayout}/>
     <Route path="/404" component={asyncComponent(() => import('@/pages/error/index'))}/>
     <Route path="*" render={() => <Redirect to="404"/>}/>
   </Switch>
