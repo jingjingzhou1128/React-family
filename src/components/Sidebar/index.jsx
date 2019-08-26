@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import {Menu, Icon} from 'antd';
 
+import MyIcon from '@/components/MyIcon';
+
 const {SubMenu} = Menu;
 
 class SubMenuItem extends Component {
@@ -55,17 +57,17 @@ export default class Sidebar extends Component {
       <Menu
         mode="inline"
         defaultSelectedKeys={defaultSelect}
+        theme="dark"
       >
         {
           menus.map(menu => {
-            // return <SiderbarItem key={`menu${menu.path}`} menu={menu}/>
             if (menu.children) {
               return (
                 <SubMenu
                   key={`menu${menu.path}`}
                   title={
                     <Link to={menu.path}>
-                      <Icon type={menu.meta.icon || "inbox"}/>
+                      <MyIcon type={menu.meta.icon}/>
                       <span>{menu.meta.title}</span>
                     </Link>
                   }
@@ -89,7 +91,7 @@ export default class Sidebar extends Component {
               return (
                 <Menu.Item key={`menu${menu.path}`}>
                   <Link to={menu.path}>
-                    <Icon type={menu.meta.icon || "pie-chart"}></Icon>
+                    <MyIcon type={menu.meta.icon}/>
                     <span>{menu.meta.title}</span>
                   </Link>
                 </Menu.Item>
