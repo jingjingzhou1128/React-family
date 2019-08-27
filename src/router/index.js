@@ -13,7 +13,7 @@ const rootRoutes = (
     <Route path="/login" component={asyncComponent(() => import('@/pages/login/index'))}/>
     <Route path="/home" component={AppLayout}/>
     <Route path="/404" component={asyncComponent(() => import('@/pages/error/index'))}/>
-    <Route path="*" render={() => <Redirect to="404"/>}/>
+    <Route path="*" render={() => <Redirect to="/404"/>}/>
   </Switch>
 )
 
@@ -34,10 +34,11 @@ export const contentRoutes = (
     {
       getRoutes(contentRouterMap).map(route => {
         return (
-          <Route key={`route${route.path}`} path={route.path} component={route.component}/>
+          <Route key={`route${route.path}`} path={route.path} component={route.component} exact={route.isExact}/>
         )
       })
     }
+    <Route path="*" render={() => <Redirect to="/404"/>}/>
   </Switch>
 )
 

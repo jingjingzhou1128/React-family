@@ -24,7 +24,6 @@ export default class AppLayout extends Component {
     this.setState({
       collapsed: !collapsed
     })
-    console.log(this.state.collapsed)
   }
 
   nprogressStart () {
@@ -35,41 +34,26 @@ export default class AppLayout extends Component {
     NProgress.done()
   }
 
-  getCurrentPath () {
-    return this.props.location.pathname
-  }
-
   componentDidMount () {
     this.nprogressDone()
   }
 
-  shouldComponentUpdate (nextProps, nextState) {
-    if (nextProps.location.pathname === this.props.location.pathname) {
-      return false
-    }
-    return true
-  }
-
   componentDidUpdate () {
-    console.log('didUpdate')
     this.nprogressDone()
-  }
-
-  componentWillUnmount () {
-    console.log('willUnmount')
   }
 
   componentDidCatch () {
     console.log('didCatch')
   }
+
   render () {
     this.nprogressStart()
-    let collapsed = this.state.collapsed
+    const collapsed = this.state.collapsed
     return (
       <Layout className="app">
         <Sider trigger={null} collapsible collapsed={collapsed}>
           <div className="logo">Logo</div>
-          <Sidebar menus={contentRouterMap} activeMenu={this.getCurrentPath()}/>
+          <Sidebar menus={contentRouterMap}/>
         </Sider>
         <Layout>
           <Header style={{background: '#fff', padding: 0}}>

@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Link} from 'react-router-dom';
+import {Link, withRouter} from 'react-router-dom';
 import {Menu, Icon} from 'antd';
 
 import MyIcon from '@/components/MyIcon';
@@ -49,14 +49,18 @@ class MenuItem extends Component {
   }
 }
 
-export default class Sidebar extends Component {
+class Sidebar extends Component {
+  getSelectedMenu () {
+    return [`menu${this.props.location.pathname}`]
+  }
+
   render () {
     const menus = this.props.menus
-    const defaultSelect = [`menu${this.props.activeMenu}`]
+    const selectedKeys = this.getSelectedMenu()
     return (
       <Menu
         mode="inline"
-        defaultSelectedKeys={defaultSelect}
+        selectedKeys={selectedKeys}
         theme="dark"
       >
         {
@@ -76,7 +80,7 @@ export default class Sidebar extends Component {
                     menu.children.map(subMenu => {
                       if (!subMenu.children) {
                         return (
-                          <Menu.Item key={subMenu.path}>
+                          <Menu.Item key={`menu${subMenu.path}`}>
                             <Link to={subMenu.path}>{subMenu.meta.title}</Link>
                           </Menu.Item>
                         )
@@ -103,3 +107,5 @@ export default class Sidebar extends Component {
     )
   }
 }
+
+export default withRouter(Sidebar)

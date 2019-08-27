@@ -13,6 +13,7 @@ const contentRouterMap = [
   },
   {
     path: '/home/permission',
+    isExact: true,
     meta: {
       icon: 'icon-shezhi',
       title: 'Permission'
