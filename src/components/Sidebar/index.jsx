@@ -54,14 +54,20 @@ class Sidebar extends Component {
     return [`menu${this.props.location.pathname}`]
   }
 
+  getOpenMenu () {
+    console.log(this.props)
+  }
+
   render () {
     const menus = this.props.menus
     const selectedKeys = this.getSelectedMenu()
+    this.getOpenMenu()
     return (
       <Menu
         mode="inline"
         selectedKeys={selectedKeys}
         theme="dark"
+        className="sidebar-menu"
       >
         {
           menus.map(menu => {
@@ -70,10 +76,10 @@ class Sidebar extends Component {
                 <SubMenu
                   key={`menu${menu.path}`}
                   title={
-                    <Link to={menu.path}>
+                    <span>
                       <MyIcon type={menu.meta.icon}/>
                       <span>{menu.meta.title}</span>
-                    </Link>
+                    </span>
                   }
                 >
                   {

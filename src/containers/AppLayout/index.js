@@ -5,6 +5,7 @@ import {Layout} from 'antd';
 
 import Sidebar from '@/components/Sidebar';
 import MyIcon from '@/components/MyIcon';
+import './index.scss'
 
 import {contentRoutes} from '@/router';
 import contentRouterMap from '@/router/config';
@@ -50,9 +51,9 @@ export default class AppLayout extends Component {
     this.nprogressStart()
     const collapsed = this.state.collapsed
     return (
-      <Layout className="app">
-        <Sider trigger={null} collapsible collapsed={collapsed}>
-          <div className="logo">Logo</div>
+      <Layout id="app">
+        <Sider trigger={null} collapsible collapsed={collapsed} className="sidebar">
+          {/* <div className="logo">Logo</div> */}
           <Sidebar menus={contentRouterMap}/>
         </Sider>
         <Layout>
