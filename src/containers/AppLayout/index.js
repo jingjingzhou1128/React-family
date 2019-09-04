@@ -4,8 +4,8 @@ import 'nprogress/nprogress.css';
 import {Layout} from 'antd';
 
 import Sidebar from '@/components/Sidebar';
-import MyIcon from '@/components/MyIcon';
-import './index.scss'
+import Navbar from '@/components/Navbar';
+import './index.scss';
 
 import {contentRoutes} from '@/router';
 import contentRouterMap from '@/router/config';
@@ -57,8 +57,8 @@ export default class AppLayout extends Component {
           <Sidebar menus={contentRouterMap}/>
         </Sider>
         <Layout>
-          <Header style={{background: '#fff', padding: 0}}>
-            <MyIcon type={collapsed ? 'icon-zhankai' : 'icon-shousuo'} onClick={() => {this.toggleCollapse()}}/>
+          <Header className="app-header">
+            <Navbar toggleCollapse={() => {this.toggleCollapse()}} collapsed={collapsed}/>
           </Header>
           <Content>
             {

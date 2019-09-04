@@ -61,7 +61,7 @@ class Sidebar extends Component {
   render () {
     const menus = this.props.menus
     const selectedKeys = this.getSelectedMenu()
-    this.getOpenMenu()
+    // this.getOpenMenu()
     return (
       <Menu
         mode="inline"
