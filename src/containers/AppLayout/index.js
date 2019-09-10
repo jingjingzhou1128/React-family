@@ -2,9 +2,11 @@ import React, {Component} from 'react';
 import NProgress from 'nprogress';
 import 'nprogress/nprogress.css';
 import {Layout} from 'antd';
+import {connect} from 'react-redux';
 
 import Sidebar from '@/components/Sidebar';
 import Navbar from '@/components/Navbar';
+import MyTags from '@/components/MyTags';
 import './index.scss';
 
 import {contentRoutes} from '@/router';
@@ -12,20 +14,26 @@ import contentRouterMap from '@/router/config';
 
 const {Sider, Header, Content} = Layout;
 
-export default class AppLayout extends Component {
-  constructor (props) {
-    super(props)
-    this.state = {
-      collapsed: false
-    }
+const mapStateToProps = (state) => {
+  return {
+    collapsed: state.app.collapsed
   }
+}
 
-  toggleCollapse () {
-    let collapsed = this.state.collapsed
-    this.setState({
-      collapsed: !collapsed
-    })
-  }
+class AppLayout extends Component {
+  // constructor (props) {
+  //   super(props)
+  //   this.state = {
+  //     collapsed: false
+  //   }
+  // }
+
+  // toggleCollapse () {
+  //   let collapsed = this.state.collapsed
+  //   this.setState({
+  //     collapsed: !collapsed
+  //   })
+  // }
 
   nprogressStart () {
     NProgress.start()
@@ -49,7 +57,7 @@ export default class AppLayout extends Component {
 
   render () {
     this.nprogressStart()
-    const collapsed = this.state.collapsed
+    const collapsed = this.props.collapsed
     return (
       <Layout id="app">
         <Sider trigger={null} collapsible collapsed={collapsed} className="sidebar">
@@ -58,9 +66,11 @@ export default class AppLayout extends Component {
         </Sider>
         <Layout>
           <Header className="app-header">
-            <Navbar toggleCollapse={() => {this.toggleCollapse()}} collapsed={collapsed}/>
+          {/*  toggleCollapse={() => {this.toggleCollapse()}} collapsed={collapsed} */}
+            <Navbar/>
+            <MyTags/>
           </Header>
-          <Content>
+          <Content className="app-main">
             {
               contentRoutes
             }
@@ -70,3 +80,5 @@ export default class AppLayout extends Component {
     )
   }
 }
+
+export default connect(mapStateToProps)(AppLayout)

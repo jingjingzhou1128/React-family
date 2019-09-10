@@ -54,14 +54,9 @@ class Sidebar extends Component {
     return [`menu${this.props.location.pathname}`]
   }
 
-  getOpenMenu () {
-    console.log(this.props)
-  }
-
   render () {
     const menus = this.props.menus
     const selectedKeys = this.getSelectedMenu()
-    // this.getOpenMenu()
     return (
       <Menu
         mode="inline"

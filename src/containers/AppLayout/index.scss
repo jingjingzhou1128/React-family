@@ -65,10 +65,10 @@
   .app-header {
     background-color: #fff;
     padding: 0;
-    height: 50px;
+    height: auto;
     line-height: 1;
     .navbar {
-      height: inherit;
+      height: 50px;
       padding: 0 20px;
       display: flex;
       justify-content: space-between;
@@ -82,8 +82,19 @@
         align-items: flex-end;
         height: inherit;
         padding-bottom: 7px;
-        > li {
-          margin-right: 20px;
+        > li + li {
+          margin-left: 20px;
+        }
+        .ant-dropdown-link {
+          .text {
+            margin-right: 5px;
+            .iconfont {
+              font-size: 24px;
+            }
+          }
+          .anticon {
+            font-size: 12px;
+          }
         }
         .user-avatar {
           img {
@@ -97,5 +108,34 @@
         }
       }
     }
+    .tags {
+      box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.12), 0 0px 3px 0 rgba(0, 0, 0, 0.04);
+      border-bottom: 1px solid #d6d6d6;
+      line-height: 34px;
+      padding: 0 20px;
+      margin-bottom: 3px;
+      .tag-item {
+        background: #42b983;
+        border: 1px solid;
+        border-color: #42b983;
+        color: #fff;
+        padding: 0 5px;
+        height: 25px;
+        line-height: 23px;
+        display: inline-block;
+        .tag-link {
+          color: #fff;
+          font-size: 12px;
+        }
+        .anticon {
+          margin-left: 3px;
+        }
+      }
+    }
+  }
+  .app-main {
+    padding: 20px;
+    text-align: center;
+    background-color: #fff;
   }
 }
