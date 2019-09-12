@@ -7,7 +7,8 @@ const contentRouterMap = [
     // isStrict: false,
     meta: {
       icon: 'icon-dashboard',
-      title: 'Dashboard'
+      title: 'Dashboard',
+      affixTag: true
     },
     component: asyncComponent(() => import('@/pages/dashboard'))
   },
@@ -37,7 +38,8 @@ const contentRouterMap = [
       {
         path: '/home/nest/menu2',
         meta: {
-          title: 'Menu2'
+          title: 'Menu2',
+          nonTag: true
         },
         component: asyncComponent(() => import('@/pages/nest/menu2'))
       }

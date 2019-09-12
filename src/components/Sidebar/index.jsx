@@ -82,7 +82,7 @@ class Sidebar extends Component {
                       if (!subMenu.children) {
                         return (
                           <Menu.Item key={`menu${subMenu.path}`}>
-                            <Link to={subMenu.path}>{subMenu.meta.title}</Link>
+                            <Link to={{pathname: subMenu.path, state: subMenu.meta}}>{subMenu.meta.title}</Link>
                           </Menu.Item>
                         )
                       } else {
@@ -95,7 +95,7 @@ class Sidebar extends Component {
             } else {
               return (
                 <Menu.Item key={`menu${menu.path}`}>
-                  <Link to={menu.path}>
+                  <Link to={{pathname: menu.path, state: menu.meta}}>
                     <MyIcon type={menu.meta.icon}/>
                     <span>{menu.meta.title}</span>
                   </Link>

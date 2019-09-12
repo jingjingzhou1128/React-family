@@ -13,7 +13,7 @@ const initState = {
 export default function reducer (state = initState, action) {
   switch (action.type) {
     case TOGGLE_SIDEBAR:
-      sessionStorage.setItem('collapsed', !state.collapsed ? 0 : 1)
+      sessionStorage.setItem('collapsed', !state.collapsed ? 1 : 0)
       return {
         ...state,
         collapsed: !state.collapsed

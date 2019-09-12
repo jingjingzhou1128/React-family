@@ -58,6 +58,7 @@ class AppLayout extends Component {
   render () {
     this.nprogressStart()
     const collapsed = this.props.collapsed
+    // console.log(this.props)
     return (
       <Layout id="app">
         <Sider trigger={null} collapsible collapsed={collapsed} className="sidebar">

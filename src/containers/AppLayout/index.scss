@@ -115,16 +115,26 @@
       padding: 0 20px;
       margin-bottom: 3px;
       .tag-item {
-        background: #42b983;
-        border: 1px solid;
-        border-color: #42b983;
-        color: #fff;
+        background: #fff;
+        color: #333;
+        border: 1px solid #c7c7c7;
         padding: 0 5px;
         height: 25px;
         line-height: 23px;
         display: inline-block;
-        .tag-link {
+        &.active {
           color: #fff;
+          background: #42b983;
+          border-color: #42b983;
+          .tag-link {
+            color: #fff;
+          }
+        }
+        & + .tag-item {
+          margin-left: 10px;
+        }
+        .tag-link {
+          color: #333;
           font-size: 12px;
         }
         .anticon {
