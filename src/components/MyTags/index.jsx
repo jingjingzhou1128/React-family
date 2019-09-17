@@ -31,12 +31,12 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 class MyTags extends Component {
-  constructor (props) {
-    super(props)
-    this.state = {
-      activeTag: ''
-    }
-  }
+  // constructor (props) {
+  //   super(props)
+  //   this.state = {
+  //     activeTag: ''
+  //   }
+  // }
   
   filterAffixTags (routes) {
     let affix = []
@@ -61,27 +61,41 @@ class MyTags extends Component {
     this.props.updateTags(tags)
   }
 
-  getActiveTag () {
-    this.setState({
-      activeTag: this.props.location.pathname
-    })
-  }
+  // getActiveTag () {
+  //   this.setState({
+  //     activeTag: this.props.location.pathname
+  //   })
+  // }
 
   deleteTag (tag) {
     this.props.deleteTag(tag)
-    console.log(this.props.tags)
+    if (this.props.location.pathname !== tag.path || this.props.tags.length < 1) return
+    let index = this.props.location.pathname === this.props.tags[this.props.tags.length - 1].path ?
+      this.props.tags.length - 2 :
+      this.props.tags.length - 1
+    if (index < 0) return
+    this.props.history.push(this.props.tags[index].path)
+  }
+
+  clearTags () {
+    this.props.clearTags()
+    let affixTags = this.props.tags.filter(item => item.isAffix)
+    if (affixTags.length < 1) return
+    if (this.props.tags[0].path === this.props.location.pathname) return
+    this.props.history.push(this.props.tags[0].path)
   }
 
   componentDidMount () {
     console.log('mount')
     this.initAffixTags()
-    this.getActiveTag()
+    // this.getActiveTag()
   }
 
   componentDidUpdate (oldProps) {
     // this.props.history.listen(()=>{
     //   console.log(2)
     // })
+    // console.log(this.props.tags)
     console.log('update')
     if (this.props.location.pathname === oldProps.location.pathname) return
     if (this.props.location.state && !this.props.location.state.nonTag) {
@@ -91,7 +105,7 @@ class MyTags extends Component {
         isAffix: !!this.props.location.state.affixTag
       })
     }
-    this.getActiveTag()
+    // this.getActiveTag()
   }
 
   render () {
@@ -99,7 +113,7 @@ class MyTags extends Component {
       <Menu>
         <Menu.Item key="tag-cont-refresh">Refresh</Menu.Item>
         <Menu.Item key="tag-cont-other">Close Other</Menu.Item>
-        <Menu.Item key="tag-cont-all">Close All</Menu.Item>
+        <Menu.Item key="tag-cont-all" onClick={() => {this.clearTags()}}>Close All</Menu.Item>
       </Menu>
     )
     return (
@@ -111,7 +125,7 @@ class MyTags extends Component {
                 overlay={contextMenu}
                 trigger={['contextMenu']}
                 key={tag.path}>
-                <span className={['tag-item', this.state.activeTag === tag.path ? 'active' : '']}>
+                <span className={['tag-item', this.props.location.pathname === tag.path ? 'active' : '']}>
                   <Link className="tag-link" to={tag.path}>{tag.title}</Link>
                   {tag.isAffix ? null : (
                     <MyIcon type="icon-close" onClick={() => {this.deleteTag(tag)}}/>

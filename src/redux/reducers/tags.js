@@ -25,6 +25,12 @@ function addTag (state, tag) {
   return [...state.tags]
 }
 
+function clearTag (state) {
+  return state.tags.filter(item => {
+    return item.isAffix
+  })
+}
+
 /**
  * reducer
  */
@@ -32,18 +38,22 @@ export default function reducer(state = initState, action) {
   switch (action.type) {
     case UPDATE_TAGS:
       return {
+        ...state,
         tags: updateTags(state, action.tags)
       }
     case CLEAR_TAGS:
       return {
-        tags: []
+        ...state,
+        tags: clearTag(state)
       }
     case ADD_TAG:
       return {
+        ...state,
         tags: addTag(state, action.tag)
       }
     case DELETE_TAG:
       return {
+        ...state,
         tags: deleteTag(state, action.tag)
       }
     default:
