@@ -1,4 +1,4 @@
-import {UPDATE_TAGS, CLEAR_TAGS, ADD_TAG, DELETE_TAG} from '@/redux/actions/tags';
+import {UPDATE_TAGS, SET_TAGS, ADD_TAG, DELETE_TAG} from '@/redux/actions/tags';
 
 /**
  * init state
@@ -25,11 +25,11 @@ function addTag (state, tag) {
   return [...state.tags]
 }
 
-function clearTag (state) {
-  return state.tags.filter(item => {
-    return item.isAffix
-  })
-}
+// function clearTag (state) {
+//   return state.tags.filter(item => {
+//     return item.isAffix
+//   })
+// }
 
 /**
  * reducer
@@ -41,11 +41,11 @@ export default function reducer(state = initState, action) {
         ...state,
         tags: updateTags(state, action.tags)
       }
-    case CLEAR_TAGS:
-      return {
-        ...state,
-        tags: clearTag(state)
-      }
+    // case CLEAR_TAGS:
+    //   return {
+    //     ...state,
+    //     tags: clearTag(state)
+    //   }
     case ADD_TAG:
       return {
         ...state,
@@ -55,6 +55,11 @@ export default function reducer(state = initState, action) {
       return {
         ...state,
         tags: deleteTag(state, action.tag)
+      }
+    case SET_TAGS:
+      return {
+        ...state,
+        tags: action.tags
       }
     default:
       return state

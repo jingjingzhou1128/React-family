@@ -5,7 +5,7 @@ import {connect} from 'react-redux';
 
 import MyIcon from '@/components/MyIcon';
 import contentRouterMap from '@/router/config';
-import {updateTags, clearTags, addTag, deleteTag} from '@/redux/actions/tags';
+import {updateTags, setTags, addTag, deleteTag} from '@/redux/actions/tags';
 
 const mapStateToProps = (state) => {
   return {
@@ -21,8 +21,8 @@ const mapDispatchToProps = (dispatch) => {
     addTag: (tag) => {
       dispatch(addTag(tag))
     },
-    clearTags: () => {
-      dispatch(clearTags())
+    setTags: (tags) => {
+      dispatch(setTags(tags))
     },
     deleteTag: (tag) => {
       dispatch(deleteTag(tag))
@@ -31,13 +31,6 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 class MyTags extends Component {
-  // constructor (props) {
-  //   super(props)
-  //   this.state = {
-  //     activeTag: ''
-  //   }
-  // }
-  
   filterAffixTags (routes) {
     let affix = []
     routes.forEach(item => {
@@ -61,11 +54,30 @@ class MyTags extends Component {
     this.props.updateTags(tags)
   }
 
-  // getActiveTag () {
-  //   this.setState({
-  //     activeTag: this.props.location.pathname
-  //   })
-  // }
+  filterCurrentTags (routes) {
+    let match = []
+    routes.forEach(item => {
+      if (item.meta && !item.meta.nonTag && (item.path === this.props.location.pathname)) {
+        match.push({
+          title: item.meta.title,
+          path: item.path,
+          isAffix: item.meta.affixTag
+        })
+      }
+      if (item.children) {
+        let tempMatch = this.filterCurrentTags(item.children)
+        match = [...match, ...tempMatch]
+      }
+    })
+    return match
+  }
+
+  initCurrentTags () {
+    let matchTags = this.filterCurrentTags(contentRouterMap)
+    if (matchTags.length < 1) return
+    if (matchTags[0].isAffix) return
+    this.props.addTag(matchTags[0])
+  }
 
   deleteTag (tag) {
     this.props.deleteTag(tag)
@@ -77,9 +89,19 @@ class MyTags extends Component {
     this.props.history.push(this.props.tags[index].path)
   }
 
-  clearTags () {
-    this.props.clearTags()
+  closeOtherTags (tag) {
+    let filterTags = this.props.tags.filter(item => item.isAffix || item.path === tag.path)
+    this.props.setTags(filterTags)
+    this.props.history.push(tag.path)
+  }
+
+  refresh (tag) {
+    this.props.history.push(tag.path)
+  }
+
+  closeAllTags () {
     let affixTags = this.props.tags.filter(item => item.isAffix)
+    this.props.setTags(affixTags)
     if (affixTags.length < 1) return
     if (this.props.tags[0].path === this.props.location.pathname) return
     this.props.history.push(this.props.tags[0].path)
@@ -88,14 +110,13 @@ class MyTags extends Component {
   componentDidMount () {
     console.log('mount')
     this.initAffixTags()
-    // this.getActiveTag()
+    this.initCurrentTags()
   }
 
   componentDidUpdate (oldProps) {
     // this.props.history.listen(()=>{
     //   console.log(2)
     // })
-    // console.log(this.props.tags)
     console.log('update')
     if (this.props.location.pathname === oldProps.location.pathname) return
     if (this.props.location.state && !this.props.location.state.nonTag) {
@@ -105,24 +126,22 @@ class MyTags extends Component {
         isAffix: !!this.props.location.state.affixTag
       })
     }
-    // this.getActiveTag()
   }
 
   render () {
-    const contextMenu = (
-      <Menu>
-        <Menu.Item key="tag-cont-refresh">Refresh</Menu.Item>
-        <Menu.Item key="tag-cont-other">Close Other</Menu.Item>
-        <Menu.Item key="tag-cont-all" onClick={() => {this.clearTags()}}>Close All</Menu.Item>
-      </Menu>
-    )
     return (
       <div className="tags">
         {
           this.props.tags.map(tag => {
             return (
               <Dropdown
-                overlay={contextMenu}
+                overlay={(
+                  <Menu>
+                    <Menu.Item key="tag-cont-refresh" onClick={() => {this.refresh(tag)}}>Refresh</Menu.Item>
+                    <Menu.Item key="tag-cont-other" onClick={() => {this.closeOtherTags(tag)}}>Close Other</Menu.Item>
+                    <Menu.Item key="tag-cont-all" onClick={() => {this.closeAllTags()}}>Close All</Menu.Item>
+                  </Menu>
+                )}
                 trigger={['contextMenu']}
                 key={tag.path}>
                 <span className={['tag-item', this.props.location.pathname === tag.path ? 'active' : '']}>
