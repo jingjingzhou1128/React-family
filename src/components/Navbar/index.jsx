@@ -2,9 +2,12 @@ import React, {Component} from 'react';
 import MyIcon from '@/components/MyIcon';
 import {Menu, Dropdown, Icon} from 'antd';
 import {connect} from 'react-redux';
+import {withRouter} from 'react-router-dom';
 
 import userAvatar from '@/assets/images/avatar.jpeg';
 import {toggleSidebar} from '@/redux/actions/app';
+import ChangeTheme from '@/components/ChangeTheme';
+import ChangeLang from '@/components/ChangeLang';
 
 const mapStateToProps = (state) => {
   return {
@@ -21,6 +24,10 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 class Navbar extends Component {
+  logout () {
+    this.props.history.push('/login')
+  }
+  
   render () {
     return (
       <div className="navbar">
@@ -29,34 +36,10 @@ class Navbar extends Component {
         </div>
         <ul className="nav-right">
           <li>
-            <Dropdown
-              trigger={['click']}
-              overlay={() => (
-                <Menu>
-                  <Menu.Item key="theme1">Theme1</Menu.Item>
-                  <Menu.Item key="theme2" disabled>Theme2</Menu.Item>
-                </Menu>
-              )}>
-              <span className="ant-dropdown-link">
-                <span className="text"><i className="iconfont icon-T-yanse"></i></span>
-                <Icon type="caret-down"/>
-              </span>
-            </Dropdown>
+            <ChangeTheme/>
           </li>
           <li>
-            <Dropdown
-              trigger={['click']}
-              overlay={() => (
-                <Menu>
-                  <Menu.Item key="chinese">中文简体</Menu.Item>
-                  <Menu.Item key="english" disabled>English</Menu.Item>
-                </Menu>
-              )}>
-              <span className="ant-dropdown-link">
-                <span className="text"><i className="iconfont icon-language"></i></span>
-                <Icon type="caret-down"/>
-              </span>
-            </Dropdown>
+            <ChangeLang/>
           </li>
           <li>
             <Dropdown
@@ -66,7 +49,7 @@ class Navbar extends Component {
                   <Menu.Item key="profile">
                     <span>Profile</span>
                   </Menu.Item>
-                  <Menu.Item key="logout">
+                  <Menu.Item key="logout" onClick={() => {this.logout()}}>
                     <span>Log Out</span>
                   </Menu.Item>
                 </Menu>
@@ -84,4 +67,4 @@ class Navbar extends Component {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Navbar)
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Navbar))

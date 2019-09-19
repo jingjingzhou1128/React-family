@@ -1,5 +1,14 @@
 #app {
   height: 100%;
+  .backstage {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,.2);
+    z-index: 999;
+  }
   .sidebar {
     width: 260px !important;
     min-width: 260px !important;
@@ -11,6 +20,17 @@
       flex: 0 0 50px !important;
       min-width: 50px !important;
       max-width: 50px !important;
+    }
+    &.mobile {
+      position: fixed;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      z-index: 1000;
+      transition: transform .5s ease;
+      &.ant-layout-sider-collapsed {
+        transform: translateX(-100%);
+      }
     }
     .sidebar-menu {
       background: #304156;
