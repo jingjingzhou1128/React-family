@@ -7,7 +7,7 @@ const contentRouterMap = [
     // isStrict: false,
     meta: {
       icon: 'icon-dashboard',
-      title: 'Dashboard',
+      title: 'dashboard',
       affixTag: true
     },
     component: asyncComponent(() => import('@/pages/dashboard'))
@@ -17,7 +17,7 @@ const contentRouterMap = [
     isExact: true,
     meta: {
       icon: 'icon-shezhi',
-      title: 'Permission'
+      title: 'permission'
     },
     component: asyncComponent(() => import('@/pages/permission'))
   },
@@ -25,20 +25,20 @@ const contentRouterMap = [
     path: '/home/nest',
     meta: {
       icon: 'icon-zhuti',
-      title: 'Nest'
+      title: 'nest'
     },
     children: [
       {
         path: '/home/nest/menu1',
         meta: {
-          title: 'Menu1'
+          title: 'menu1'
         },
         component: asyncComponent(() => import('@/pages/nest/menu1'))
       },
       {
         path: '/home/nest/menu2',
         meta: {
-          title: 'Menu2',
+          title: 'menu2',
           nonTag: true
         },
         component: asyncComponent(() => import('@/pages/nest/menu2'))
