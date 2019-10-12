@@ -25,7 +25,6 @@ class ChangeTheme extends Component {
   }
 
   componentDidMount () {
-    console.log('mount')
     this.initTheme()
   }
 

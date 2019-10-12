@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {Menu, Dropdown, Icon} from 'antd';
 import {connect} from 'react-redux';
 import {setLang} from '@/redux/actions/app';
+// import moment from 'moment';
 
 const mapStateToProps = (state) => {
   return {
@@ -13,20 +14,12 @@ const mapDispatchToProps = (dispatch) => {
   return {
     changeLang: (lang) => {
       dispatch(setLang(lang))
+      // moment.locale(lang)
     }
   }
 }
 
 class ChangeLang extends Component {
-  initLang () {
-    // let language = this.props.currentLang
-  }
-
-  componentDidMount () {
-    console.log('mount')
-    this.initLang()
-  }
-
   render () {
     const langList = [
       {

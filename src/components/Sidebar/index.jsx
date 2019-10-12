@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {Link, withRouter} from 'react-router-dom';
 import {Menu, Icon} from 'antd';
+// import {FormattedMessage} from 'react-intl';
 
 import MyIcon from '@/components/MyIcon';
 
@@ -74,6 +75,9 @@ class Sidebar extends Component {
                     <span>
                       <MyIcon type={menu.meta.icon}/>
                       <span>{menu.meta.title}</span>
+                      {/* <span>
+                        <FormattedMessage id={`reactFrame.route.${menu.meta.title}`}/>
+                      </span> */}
                     </span>
                   }
                 >

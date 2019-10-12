@@ -108,7 +108,6 @@ class MyTags extends Component {
   }
 
   componentDidMount () {
-    console.log('mount')
     this.initAffixTags()
     this.initCurrentTags()
   }
@@ -117,7 +116,6 @@ class MyTags extends Component {
     // this.props.history.listen(()=>{
     //   console.log(2)
     // })
-    console.log('update')
     if (this.props.location.pathname === oldProps.location.pathname) return
     if (this.props.location.state && !this.props.location.state.nonTag) {
       this.props.addTag({
