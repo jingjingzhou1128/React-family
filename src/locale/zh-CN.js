@@ -7,6 +7,6 @@ export default {
       menu1: '菜单1',
       menu2: '菜单2'
     }
-  }
-  // 'reactFrame.route.nest': '嵌套'
+  },
+  'reactFrame.route.nest': '嵌套'
 }

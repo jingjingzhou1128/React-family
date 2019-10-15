@@ -7,6 +7,6 @@ export default {
       menu1: 'Menu1',
       menu2: 'Menu2'
     }
-  }
-  // 'reactFrame.route.nest': 'Nest'
+  },
+  'reactFrame.route.nest': 'Nest'
 }
