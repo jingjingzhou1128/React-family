@@ -42,8 +42,6 @@ class Login extends Component {
   handleSubmit (event) {
     event.preventDefault();
     this.props.form.validateFields((err, values) => {
-      console.log(err)
-      console.log(values)
       if (err) return
       if (values.remember) {
         localStorage.setItem('username', values.username)

@@ -8,5 +8,6 @@ export default {
       menu2: '菜单2'
     }
   },
-  'reactFrame.route.nest': '嵌套'
+  'reactFrame.route.nest': '嵌套',
+  'reactFrame.login.password': '请输入密码'
 }
