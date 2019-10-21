@@ -75,7 +75,8 @@ class Sidebar extends Component {
                   title={
                     <span>
                       <MyIcon type={menu.meta.icon}/>
-                      <span>{menu.meta.title}</span>
+                      {/* <span>{menu.meta.title}</span> */}
+                      <span>{window.intl.get(`reactFrame.route.${menu.meta.title}`)}</span>
                       {/* <span title={this.props.intl.formatMessage({id: `reactFrame.route.${menu.meta.title}`})}>
                         {this.props.intl.formatMessage({id: `reactFrame.route.${menu.meta.title}`})}
                         <FormattedMessage id={`reactFrame.route.${menu.meta.title}`}/>

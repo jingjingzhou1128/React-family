@@ -39,12 +39,12 @@ export default function reducer (state = initState, action) {
         ...state,
         theme: action.theme
       }
-    case SET_LANG:
-      sessionStorage.setItem('language', action.lang)
-      return {
-        ...state,
-        language: action.lang
-      }
+    // case SET_LANG:
+    //   sessionStorage.setItem('language', action.lang)
+    //   return {
+    //     ...state,
+    //     language: action.lang
+    //   }
     case SET_DEVICE:
       return {
         ...state,

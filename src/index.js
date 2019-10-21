@@ -7,7 +7,7 @@ import * as serviceWorker from './serviceWorker';
 import {Provider} from 'react-redux';
 
 import store from '@/redux/store';
-// import '@/locale/index';
+import '@/locale/index';
 
 ReactDOM.render(
   <Provider store={store}>

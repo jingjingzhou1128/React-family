@@ -1,8 +1,6 @@
 import React, {Component} from 'react';
 import {Menu, Dropdown, Icon} from 'antd';
 import {connect} from 'react-redux';
-import {setLang} from '@/redux/actions/app';
-// import moment from 'moment';
 
 const mapStateToProps = (state) => {
   return {
@@ -10,16 +8,12 @@ const mapStateToProps = (state) => {
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    changeLang: (lang) => {
-      dispatch(setLang(lang))
-      // moment.locale(lang)
-    }
-  }
-}
-
 class ChangeLang extends Component {
+  changeLang (lang) {
+    sessionStorage.setItem('language', lang)
+    window.location.reload(true)
+  }
+
   render () {
     const langList = [
       {
@@ -42,7 +36,7 @@ class ChangeLang extends Component {
                   <Menu.Item
                     key={item.value}
                     disabled={item.value === this.props.currentLang}
-                    onClick={() => {this.props.changeLang(item.value)}}>
+                    onClick={() => {this.changeLang(item.value)}}>
                     {item.label}
                   </Menu.Item>
                 )
@@ -59,4 +53,4 @@ class ChangeLang extends Component {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ChangeLang)
+export default connect(mapStateToProps, null)(ChangeLang)
