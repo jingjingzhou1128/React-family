@@ -8,6 +8,7 @@ import {Provider} from 'react-redux';
 
 import store from '@/redux/store';
 import '@/locale/index';
+import '@/directives/prototype';
 
 ReactDOM.render(
   <Provider store={store}>

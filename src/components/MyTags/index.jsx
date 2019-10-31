@@ -143,7 +143,7 @@ class MyTags extends Component {
                 trigger={['contextMenu']}
                 key={tag.path}>
                 <span className={['tag-item', this.props.location.pathname === tag.path ? 'active' : '']}>
-                  <Link className="tag-link" to={tag.path}>{tag.title}</Link>
+                  <Link className="tag-link" to={tag.path}>{window.generateMessage(`reactFrame.route.${tag.title}`)}</Link>
                   {tag.isAffix ? null : (
                     <MyIcon type="icon-close" onClick={() => {this.deleteTag(tag)}}/>
                   )}

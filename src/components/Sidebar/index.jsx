@@ -1,8 +1,6 @@
 import React, {Component} from 'react';
 import {Link, withRouter} from 'react-router-dom';
 import {Menu, Icon} from 'antd';
-// import {FormattedMessage} from 'react-intl';
-// import {injectIntl} from 'react-intl';
 
 import MyIcon from '@/components/MyIcon';
 
@@ -75,12 +73,7 @@ class Sidebar extends Component {
                   title={
                     <span>
                       <MyIcon type={menu.meta.icon}/>
-                      {/* <span>{menu.meta.title}</span> */}
-                      <span>{window.intl.get(`reactFrame.route.${menu.meta.title}`)}</span>
-                      {/* <span title={this.props.intl.formatMessage({id: `reactFrame.route.${menu.meta.title}`})}>
-                        {this.props.intl.formatMessage({id: `reactFrame.route.${menu.meta.title}`})}
-                        <FormattedMessage id={`reactFrame.route.${menu.meta.title}`}/>
-                      </span> */}
+                      <span>{window.generateMessage(`reactFrame.route.${menu.meta.title}`)}</span>
                     </span>
                   }
                 >
@@ -89,7 +82,7 @@ class Sidebar extends Component {
                       if (!subMenu.children) {
                         return (
                           <Menu.Item key={`menu${subMenu.path}`}>
-                            <Link to={{pathname: subMenu.path, state: subMenu.meta}}>{subMenu.meta.title}</Link>
+                            <Link to={{pathname: subMenu.path, state: subMenu.meta}}>{window.generateMessage(`reactFrame.route.${subMenu.meta.title}`)}</Link>
                           </Menu.Item>
                         )
                       } else {
@@ -104,7 +97,7 @@ class Sidebar extends Component {
                 <Menu.Item key={`menu${menu.path}`}>
                   <Link to={{pathname: menu.path, state: menu.meta}}>
                     <MyIcon type={menu.meta.icon}/>
-                    <span>{menu.meta.title}</span>
+                    <span>{window.generateMessage(`reactFrame.route.${menu.meta.title}`)}</span>
                   </Link>
                 </Menu.Item>
               )
@@ -116,5 +109,4 @@ class Sidebar extends Component {
   }
 }
 
-// export default injectIntl(withRouter(Sidebar))
 export default withRouter(Sidebar)

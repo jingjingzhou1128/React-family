@@ -1,5 +1,6 @@
-import {TOGGLE_SIDEBAR, OPEN_SIDEBAR, CLOSE_SIDEBAR, SET_THEME, SET_LANG, SET_DEVICE} from '../actions/app';
+import {TOGGLE_SIDEBAR, OPEN_SIDEBAR, CLOSE_SIDEBAR, SET_THEME, SET_DEVICE} from '../actions/app';
 
+// SET_LANG,
 /**
  * init state
  */

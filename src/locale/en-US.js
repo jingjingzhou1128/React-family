@@ -8,6 +8,4 @@ export default {
       menu2: 'Menu2'
     }
   }
-  // 'reactFrame.route.nest': 'Nest',
-  // 'reactFrame.login.password': 'Please input your password'
 }
