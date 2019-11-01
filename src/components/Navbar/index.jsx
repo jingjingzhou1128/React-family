@@ -47,10 +47,10 @@ class Navbar extends Component {
               overlay={() => (
                 <Menu>
                   <Menu.Item key="profile">
-                    <span>Profile</span>
+                    <span>{window.generateMessage('reactFrame.user.profile')}</span>
                   </Menu.Item>
                   <Menu.Item key="logout" onClick={() => {this.logout()}}>
-                    <span>Log Out</span>
+                    <span>{window.generateMessage('reactFrame.user.logout')}</span>
                   </Menu.Item>
                 </Menu>
               )}

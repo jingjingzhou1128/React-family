@@ -37,3 +37,10 @@ ul {
 //   -webkit-font-smoothing: antialiased;
 //   -moz-osx-font-smoothing: grayscale;
 // }
+
+// btn
+.btn-group {
+  button + button {
+    margin-left: 10px;
+  }
+}

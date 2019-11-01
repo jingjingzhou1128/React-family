@@ -6,6 +6,10 @@ export default {
       nest: '嵌套',
       menu1: '菜单1',
       menu2: '菜单2'
+    },
+    user: {
+      profile: '个人信息',
+      logout: '退出'
     }
   }
 }

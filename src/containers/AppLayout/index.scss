@@ -164,8 +164,11 @@
     }
   }
   .app-main {
-    padding: 20px;
+    padding: 10px;
     text-align: center;
     background-color: #fff;
+    .main-wrapper {
+      height: 100%;
+    }
   }
 }

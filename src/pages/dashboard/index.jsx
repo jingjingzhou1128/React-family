@@ -1,14 +1,32 @@
 import React, {Component} from 'react';
-import {DatePicker} from 'antd';
+import {Button} from 'antd';
 
-const {RangePicker} = DatePicker;
+import MyBreadcrumb from '@/components/MyBreadcrumb';
 
 export default class Dashboard extends Component {
+  constructor (props) {
+    super(props)
+    this.state = {
+      breads: {
+        separator: '/',
+        data: [
+          {
+            title: window.generateMessage('reactFrame.route.dashboard'),
+            // link: '/home/dashboard'
+          }
+        ]
+      }
+    }
+  }
   render () {
     return (
-      <div>
-        Dashboard Page
-        <RangePicker/>
+      <div className="main-wrapper">
+        <MyBreadcrumb breads={this.state.breads}>
+          <div className="btn-group">
+            <Button type="primary">Primary</Button>
+            <Button type="success">Success</Button>
+          </div>
+        </MyBreadcrumb>
       </div>
     )
   }
