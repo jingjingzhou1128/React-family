@@ -1,5 +1,5 @@
 @import './normalize.css';
-// @import '~antd/dist/antd.css';
+@import './antdUi.scss';
 
 html, body {
   margin: 0;
@@ -38,9 +38,70 @@ ul {
 //   -moz-osx-font-smoothing: grayscale;
 // }
 
-// btn
+// 按钮
 .btn-group {
   button + button {
     margin-left: 10px;
+  }
+  .btn + .btn {
+    margin-left: 10px;
+  }
+}
+.btn {
+  font-size: 14px;
+  color: $grayDarker;
+  height: 32px;
+  line-height: 30px;
+  padding: 0 15px;
+  display: inline-block;
+  border: 1px solid $grayDark;
+  background-color: $default;
+  cursor: pointer;
+  &.btn-mini {
+    height: 24px;
+    line-height: 22px;
+    padding: 0 8px;
+  }
+  &.btn-small {
+    height: 28px;
+    line-height: 26px;
+    padding: 0 12px;
+  }
+  &.btn-large {
+    height: 40px;
+    line-height: 38px;
+  }
+  &.btn-default {
+    color: $grayDarker;
+    background-color: $default;
+    border-color: $grayDark;
+  }
+  &.btn-primary {
+    color: #fff;
+    background-color: $primary;
+    border-color: $primary;
+  }
+  &.btn-success {
+    color: #fff;
+    background-color: $success;
+    border-color: $success;
+  }
+  &.btn-warning {
+    color: #fff;
+    background-color: $warning;
+    border-color: $warning;
+  }
+  &.btn-info {
+    color: $grayDarker;
+    background-color: $info;
+    border-color: $info;
+  }
+  &.btn-danger {
+    color: #fff;
+    background-color: $danger;
+    border-color: $danger;
+  }
+  &.btn-text {
+    border: none;
   }
 }

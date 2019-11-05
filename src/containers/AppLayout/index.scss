@@ -1,5 +1,6 @@
 #app {
   height: 100%;
+  color: #333333;
   .backstage {
     position: fixed;
     left: 0;
@@ -164,11 +165,13 @@
     }
   }
   .app-main {
-    padding: 10px;
+    // padding:  10px 20px 20px;
     text-align: center;
-    background-color: #fff;
+    background-color: #f1f1f1;
+    // background-color: #fff;
     .main-wrapper {
       height: 100%;
+      background-color: #f1f1f1;
     }
   }
 }

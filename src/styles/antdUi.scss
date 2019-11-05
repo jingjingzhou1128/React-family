@@ -1,0 +1,53 @@
+// 按钮
+.ant-btn {
+  border-radius: 0 !important;
+  color: $grayDarker !important;
+  background-color: $default !important;
+  border-color: $grayDark !important;
+  height: 32px !important;
+  line-height: 30px !important;
+  &.ant-btn-mini {
+    height: 24px !important;
+    line-height: 22px !important;
+    padding: 0 8px !important;
+  }
+  &.ant-btn-sm {
+    height: 28px !important;
+    line-height: 26px !important;
+    padding: 0 12px !important;
+  }
+  &.ant-btn-lg {
+    height: 40px !important;
+    line-height: 38px !important;
+  }
+  &.ant-btn-primary {
+    color: #fff !important;
+    background-color: $primary !important;
+    border-color: $primary !important;
+  }
+  &.ant-btn-success {
+    color: #fff !important;
+    background-color: $success !important;
+    border-color: $success !important;
+  }
+  &.ant-btn-warning {
+    color: #fff !important;
+    background-color: $warning !important;
+    border-color: $warning !important;
+  }
+  &.ant-btn-danger {
+    color: #fff !important;
+    background-color: $danger !important;
+    border-color: $danger !important;
+  }
+  &.ant-btn-info {
+    color: $grayDarker !important;
+    background-color: $info !important;
+    border-color: $info !important;
+  }
+  &.ant-btn-default {
+    color: $grayDarker !important;
+    background-color: $default !important;
+    border-color: $grayDark !important;
+  }
+}
