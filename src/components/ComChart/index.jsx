@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
-import echarts from 'echarts/lib/echarts';
-import  'echarts/lib/chart/line';
+import * as echarts from 'echarts';
 
 import {debounce} from '@/utils/common';
 import './index.scss';
@@ -38,7 +37,7 @@ class ComChart extends Component {
   }
 
   resizeWindow () {
-    if (this.chart) {
+    if (this.state.chart) {
       // let width = document.getElementById(this.props.chartId).clientWidth
       // this.state.chart.resize({width: width})
       this.state.chart.resize()

@@ -4,6 +4,7 @@ export const CLOSE_SIDEBAR = 'app/CLODE_SIDEBAR';
 export const SET_THEME = 'app/SET_THEME';
 // export const SET_LANG = 'app/SET_LANG';
 export const SET_DEVICE = 'app/SET_DEVICE';
+export const SET_DASSET = 'app/SET_DASSET';
 
 export function toggleSidebar () {
   return {
@@ -41,5 +42,12 @@ export function setDevice (device) {
   return {
     type: SET_DEVICE,
     device
+  }
+}
+
+export function setDasSet (das) {
+  return {
+    type: SET_DASSET,
+    das
   }
 }

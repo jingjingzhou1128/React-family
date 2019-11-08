@@ -1,3 +1,32 @@
+/**
+ * @author zhoujingjing
+ * @description 本地化翻译
+ * @param message 被翻译的文本
+ *        variables 文本中用到的变量
+ */
 window.generateMessage = (message, variables) => {
   return window.intl.get(message, variables)
 }
+
+/**
+ * @author zhoujingjing
+ * @description 格式化数字，每三位加分位符
+ * @param value 需要转换的值
+ *        precis 保留小数位位数
+ */
+window.toThousandFilter = (value, precis = 2) => {
+  if (!value) return ''
+  return Number(value).toFixed(precis).replace(/\d{1,3}(?=(\d{3})+(\.\d*)?$)/g, '$&,')
+}
+
+/**
+ * @author zhoujingjing
+ * @description 首字母大写
+ * @param str 需要转换的字符串
+ */
+window.initToUpperCase = (str) => {
+  if (!str) return ''
+  str = str.toString()
+  return str.charAt(0).toUpperCase() + str.slice(1)
+}
+

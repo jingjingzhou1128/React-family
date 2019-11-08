@@ -105,3 +105,49 @@ ul {
     border: none;
   }
 }
+
+// 面板
+.panel {
+  background-color: #fff;
+  margin-bottom: 20px;
+}
+.panel-body {
+  padding: 20px;
+}
+
+// 标签
+.tag {
+  height: 22px;
+  line-height: 20px;
+  font-size: 12px;
+  padding: 0 7px;
+  border-radius: 4px;
+  & + .tag {
+    margin-left: 8px;
+  }
+}
+.tag-info {
+  color: $grayDarker !important;
+  background-color: $info !important;
+  border-color: $info !important;
+}
+.tag-danger {
+  color: #fff !important;
+  background-color: $danger !important;
+  border-color: $danger !important;
+}
+.tag-warning {
+  color: #fff !important;
+  background-color: $warning !important;
+  border-color: $warning !important;
+}
+.tag-primary {
+  color: #fff !important;
+  background-color: $primary !important;
+  border-color: $primary !important;
+}
+.tag-success {
+  color: #fff !important;
+  background-color: $success !important;
+  border-color: $success !important;
+}
