@@ -21,27 +21,43 @@ const contentRouterMap = [
     },
     component: asyncComponent(() => import('@/pages/permission'))
   },
+  // {
+  //   path: '/home/nest',
+  //   meta: {
+  //     icon: 'icon-zhuti',
+  //     title: 'nest'
+  //   },
+  //   children: [
+  //     {
+  //       path: '/home/nest/menu1',
+  //       meta: {
+  //         title: 'menu1'
+  //       },
+  //       component: asyncComponent(() => import('@/pages/nest/menu1'))
+  //     },
+  //     {
+  //       path: '/home/nest/menu2',
+  //       meta: {
+  //         title: 'menu2',
+  //         nonTag: true
+  //       },
+  //       component: asyncComponent(() => import('@/pages/nest/menu2'))
+  //     }
+  //   ]
+  // },
   {
-    path: '/home/nest',
+    path: '/home/ui',
     meta: {
       icon: 'icon-zhuti',
-      title: 'nest'
+      title: 'ui'
     },
     children: [
       {
-        path: '/home/nest/menu1',
+        path: '/home/ui/button',
         meta: {
-          title: 'menu1'
+          title: 'button'
         },
-        component: asyncComponent(() => import('@/pages/nest/menu1'))
-      },
-      {
-        path: '/home/nest/menu2',
-        meta: {
-          title: 'menu2',
-          nonTag: true
-        },
-        component: asyncComponent(() => import('@/pages/nest/menu2'))
+        component: asyncComponent(() => import('@/pages/ui/button'))
       }
     ]
   }

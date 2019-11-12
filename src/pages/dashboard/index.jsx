@@ -515,6 +515,10 @@ class Dashboard extends Component {
     let modifySet = Object.keys(this.state.tmpPanelSet).filter(item => this.state.tmpPanelSet[item])
     this.props.setDasSet(modifySet.join(','))
     this.closeSetDialog()
+    window.notificationSuccess({
+      msg: 'Success',
+      desc: 'Operation is successfully!'
+    })
   }
 
   /**
@@ -587,7 +591,7 @@ class Dashboard extends Component {
             <Button type="primary" className="ant-btn-mini" onClick={() => {this.openSetDialog()}}>Setting</Button>
           </div>
         </MyBreadcrumb>
-        <Row gutter={16} type="flex">
+        <Row gutter={16} type="flex" className="main-content">
           <Col span={24}>
             <ul className="summary panel">
               <li>
