@@ -44,6 +44,12 @@ class ComChart extends Component {
     }
   }
 
+  clearChart () {
+    if (this.state.chart) {
+      this.state.chart.clear()
+    }
+  }
+
   componentDidMount () {
     this.initChart(this.props.chartId, this.props.chartOptions)
     window.addEventListener('resize', this.__resizeHandler)

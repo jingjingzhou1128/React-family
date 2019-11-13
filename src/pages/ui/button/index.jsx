@@ -31,7 +31,7 @@ export default class ButtonPage extends Component {
       <div className="main-wrapper">
         <MyBreadcrumb breads={this.state.breads}></MyBreadcrumb>
         <Row gutter={16} type="flex" className="main-content">
-          <Col span={12}>
+          <Col span={24}>
             <div className="panel">
               <PanelTitle panelTitle={{title: 'Type'}}></PanelTitle>
               <div className="panel-body">
@@ -43,7 +43,7 @@ export default class ButtonPage extends Component {
               </div>
             </div>
           </Col>
-          <Col span={12}>
+          <Col span={24}>
             <div className="panel">
               <PanelTitle panelTitle={{title: 'Shape'}}></PanelTitle>
               <div className="panel-body">
@@ -54,7 +54,7 @@ export default class ButtonPage extends Component {
               </div>
             </div>
           </Col>
-          <Col span={12}>
+          <Col span={24}>
             <div className="panel">
               <PanelTitle panelTitle={{title: 'Size'}}></PanelTitle>
               <div className="panel-body">
@@ -64,7 +64,19 @@ export default class ButtonPage extends Component {
               </div>
             </div>
           </Col>
-          <Col span={12}>
+          <Col span={24}>
+            <div className="panel">
+              <PanelTitle panelTitle={{title: 'Ghost Button'}}></PanelTitle>
+              <div className="panel-body" style={{backgroundColor: '#bec8c8'}}>
+                <Button type="primary" ghost>Primary</Button>
+                <Button type="danger" ghost>Danger</Button>
+                <Button type="dashed" ghost>Dashed</Button>
+                <Button ghost>Default</Button>
+                <Button type="link" ghost>Link</Button>
+              </div>
+            </div>
+          </Col>
+          <Col span={24}>
             <div className="panel">
               <PanelTitle panelTitle={{title: 'Disabled'}}></PanelTitle>
               <div className="panel-body">
@@ -88,10 +100,30 @@ export default class ButtonPage extends Component {
                   <Button>Default</Button>
                   <Button disabled>Default</Button>
                 </div>
+                <div style={{backgroundColor: '#bec8c8', paddingTop: '20px'}}>
+                  <Button type="primary" ghost>Primary</Button>
+                  <Button type="primary" ghost disabled>Primary</Button>
+                </div>
+                <div style={{backgroundColor: '#bec8c8'}}>
+                  <Button type="danger" ghost>Danger</Button>
+                  <Button type="danger" ghost disabled>Danger</Button>
+                </div>
+                <div style={{backgroundColor: '#bec8c8'}}>
+                  <Button type="dashed" ghost>Dashed</Button>
+                  <Button type="dashed" ghost disabled>Dashed</Button>
+                </div>
+                <div style={{backgroundColor: '#bec8c8'}}>
+                  <Button ghost>Default</Button>
+                  <Button ghost disabled>Default</Button>
+                </div>
+                <div style={{backgroundColor: '#bec8c8'}}>
+                  <Button type="link" ghost>Link</Button>
+                  <Button type="link" ghost disabled>Link</Button>
+                </div>
               </div>
             </div>
           </Col>
-          <Col span={12}>
+          <Col span={24}>
             <div className="panel">
               <PanelTitle panelTitle={{title: 'Button Group'}}></PanelTitle>
               <div className="panel-body">
