@@ -1,0 +1,14 @@
+.ant-row {
+  .ant-col {
+    text-align: center;
+    color: #fff;
+    padding: 10px;
+    margin-bottom: 20px;
+  }
+  .ant-col:nth-child(even) {
+    background-color: $primary;
+  }
+  .ant-col:nth-child(odd) {
+    background-color: $success;
+  }
+}

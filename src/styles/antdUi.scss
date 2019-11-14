@@ -7,7 +7,7 @@
     border-color: $grayDark;
     height: 32px;
     line-height: 30px;
-    &.ant-btn {
+    & + .ant-btn {
       margin-left: 10px;
     }
   }
@@ -136,6 +136,10 @@
     .ant-btn-danger:not(:first-child):not(:last-child) {
       border-right-color: #f99494;
     }
+  }
+  // block button
+  .ant-btn-block + .ant-btn-block {
+    margin-left: 0;
   }
 }
 

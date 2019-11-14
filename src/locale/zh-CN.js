@@ -7,7 +7,10 @@ export default {
       menu1: '菜单1',
       menu2: '菜单2',
       ui: 'UI',
-      button: '按钮'
+      button: '按钮',
+      typography: '排版',
+      layout: '布局',
+      grid: '栅格'
     },
     user: {
       profile: '个人信息',

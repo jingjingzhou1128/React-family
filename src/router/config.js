@@ -58,6 +58,29 @@ const contentRouterMap = [
           title: 'button'
         },
         component: asyncComponent(() => import('@/pages/ui/button'))
+      },
+      {
+        path: '/home/ui/typography',
+        meta: {
+          title: 'typography'
+        },
+        component: asyncComponent(() => import('@/pages/ui/typography'))
+      }
+    ]
+  },
+  {
+    path: '/home/layout',
+    meta: {
+      icon: 'icon-zhuti',
+      title: 'layout'
+    },
+    children: [
+      {
+        path: '/home/layout/grid',
+        meta: {
+          title: 'grid'
+        },
+        component: asyncComponent(() => import('@/pages/layout/grid'))
       }
     ]
   }
