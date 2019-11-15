@@ -35,13 +35,23 @@ export default class GridPage extends Component {
         <MyBreadcrumb breads={this.state.breads}></MyBreadcrumb>
         <div className="main-content">
           <Row>
-            <Col span={12}>col-12</Col>
-            <Col span={12}>col-12</Col>
+            <Col span={12}><p>col-12</p></Col>
+            <Col span={12}><p>col-12</p></Col>
           </Row>
           <Row>
-            <Col span={8}>col-8</Col>
-            <Col span={8}>col-8</Col>
-            <Col span={8}>col-8</Col>
+            <Col span={8}><p>col-8</p></Col>
+            <Col span={8}><p>col-8</p></Col>
+            <Col span={8}><p>col-8</p></Col>
+          </Row>
+          <Row gutter={24}>
+            <Col span={8}><p>col-8</p></Col>
+            <Col span={8}><p>col-8</p></Col>
+            <Col span={8}><p>col-8</p></Col>
+          </Row>
+          <Row type="flex" justify="center">
+            <Col span={4}><p>col-4</p></Col>
+            <Col span={4}><p>col-4</p></Col>
+            <Col span={4}><p>col-4</p></Col>
           </Row>
         </div>
       </div>
