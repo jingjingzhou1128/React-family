@@ -1,14 +1,14 @@
-import React, {Component} from 'react';
-import {connect} from 'react-redux';
-import {Button, Row, Col, Table, Tag, List, Avatar, Descriptions, Switch} from 'antd';
+import React, {Component} from 'react'
+import {connect} from 'react-redux'
+import {Button, Row, Col, Table, Tag, List, Avatar, Descriptions, Switch} from 'antd'
 
-import MyBreadcrumb from '@/components/MyBreadcrumb';
-import PanelTitle from '@/components/PanelTitle';
-import MyIcon from '@/components/MyIcon';
-import ComChart from '@/components/ComChart';
-import ComModal from '@/components/ComModal';
-import {setDasSet} from '@/redux/actions/app';
-import './index.scss';
+import MyBreadcrumb from '@/components/MyBreadcrumb'
+import PanelTitle from '@/components/PanelTitle'
+import MyIcon from '@/components/MyIcon'
+import ComChart from '@/components/ComChart'
+import ComModal from '@/components/ComModal'
+import {setDasSet} from '@/redux/actions/app'
+import './index.scss'
 
 function resizeWindow () {
   let myEvent = new Event('resize')
