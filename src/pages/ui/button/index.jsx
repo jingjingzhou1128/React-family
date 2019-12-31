@@ -1,9 +1,9 @@
-import React, {Component} from 'react';
-import {Row, Col, Button} from 'antd';
+import React, {Component} from 'react'
+import {Row, Col, Button} from 'antd'
 
-import MyBreadcrumb from '@/components/MyBreadcrumb';
-import PanelTitle from '@/components/PanelTitle';
-import './index.scss';
+import MyBreadcrumb from '@/components/MyBreadcrumb'
+import PanelTitle from '@/components/PanelTitle'
+import './index.scss'
 
 export default class ButtonPage extends Component {
   constructor (props) {

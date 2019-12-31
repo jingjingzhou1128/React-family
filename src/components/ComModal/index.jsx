@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import {Modal} from 'antd';
+import React, {Component} from 'react'
+import {Modal} from 'antd'
 
 export default class ComModal extends Component {
   render () {

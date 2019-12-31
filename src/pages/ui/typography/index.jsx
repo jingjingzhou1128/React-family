@@ -1,8 +1,8 @@
-import React, {Component} from 'react';
-import {Typography} from 'antd';
+import React, {Component} from 'react'
+import {Typography} from 'antd'
 
-import MyBreadcrumb from '@/components/MyBreadcrumb';
-import PanelTitle from '@/components/PanelTitle';
+import MyBreadcrumb from '@/components/MyBreadcrumb'
+import PanelTitle from '@/components/PanelTitle'
 
 export default class TypographyPage extends Component {
   constructor (props) {

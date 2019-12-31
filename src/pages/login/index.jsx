@@ -1,9 +1,9 @@
-import React, {Component} from 'react';
-// import {Link} from 'react-router-dom';
-import {Form, Input, Button, Checkbox} from 'antd';
+import React, {Component} from 'react'
+// import {Link} from 'react-router-dom'
+import {Form, Input, Button, Checkbox} from 'antd'
 
-import MyIcon from '@/components/MyIcon';
-import './index.scss';
+import MyIcon from '@/components/MyIcon'
+import './index.scss'
 
 // 字符串加密
 function compileStr (code) {
@@ -40,7 +40,7 @@ class Login extends Component {
   }
 
   handleSubmit (event) {
-    event.preventDefault();
+    event.preventDefault()
     this.props.form.validateFields((err, values) => {
       if (err) return
       if (values.remember) {

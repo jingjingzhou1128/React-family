@@ -1,6 +1,6 @@
-import React, {Component} from 'react';
+import React, {Component} from 'react'
 
-import './index.scss';
+import './index.scss'
 
 class PanelTitle extends Component {
   /**
@@ -20,4 +20,4 @@ class PanelTitle extends Component {
   }
 }
 
-export default PanelTitle;
+export default PanelTitle

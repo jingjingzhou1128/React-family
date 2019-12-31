@@ -1,10 +1,10 @@
-import React, {Component} from 'react';
-import {Link, withRouter} from 'react-router-dom';
-import {Menu, Icon} from 'antd';
+import React, {Component} from 'react'
+import {Link, withRouter} from 'react-router-dom'
+import {Menu, Icon} from 'antd'
 
-import MyIcon from '@/components/MyIcon';
+import MyIcon from '@/components/MyIcon'
 
-const {SubMenu} = Menu;
+const {SubMenu} = Menu
 
 class SubMenuItem extends Component {
   render () {

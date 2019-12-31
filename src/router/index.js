@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 import {Switch, Route, Redirect} from 'react-router-dom'
 
 import {asyncComponent} from '@/utils/asyncComponent'
@@ -42,4 +42,4 @@ export const contentRoutes = (
   </Switch>
 )
 
-export default rootRoutes;
+export default rootRoutes

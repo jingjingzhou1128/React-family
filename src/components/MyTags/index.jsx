@@ -1,11 +1,11 @@
-import React, {Component} from 'react';
-import {Menu, Dropdown} from 'antd';
-import {Link, withRouter} from 'react-router-dom';
-import {connect} from 'react-redux';
+import React, {Component} from 'react'
+import {Menu, Dropdown} from 'antd'
+import {Link, withRouter} from 'react-router-dom'
+import {connect} from 'react-redux'
 
-import MyIcon from '@/components/MyIcon';
-import contentRouterMap from '@/router/config';
-import {updateTags, setTags, addTag, deleteTag} from '@/redux/actions/tags';
+import MyIcon from '@/components/MyIcon'
+import contentRouterMap from '@/router/config'
+import {updateTags, setTags, addTag, deleteTag} from '@/redux/actions/tags'
 
 const mapStateToProps = (state) => {
   return {

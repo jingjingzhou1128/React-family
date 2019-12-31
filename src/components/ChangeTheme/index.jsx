@@ -1,7 +1,7 @@
-import React, {Component} from 'react';
-import {Menu, Dropdown, Icon} from 'antd';
-import {connect} from 'react-redux';
-import {setTheme} from '@/redux/actions/app';
+import React, {Component} from 'react'
+import {Menu, Dropdown, Icon} from 'antd'
+import {connect} from 'react-redux'
+import {setTheme} from '@/redux/actions/app'
 
 const mapStateToProps = (state) => {
   return {

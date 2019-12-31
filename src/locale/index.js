@@ -1,6 +1,6 @@
-import intl from 'react-intl-universal';
-import zhLocale from '@/locale/zh-CN';
-import enLocale from '@/locale/en-US';
+import intl from 'react-intl-universal'
+import zhLocale from '@/locale/zh-CN'
+import enLocale from '@/locale/en-US'
 
 // 初始化
 const loadLocales = () => {

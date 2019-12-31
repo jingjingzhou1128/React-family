@@ -1,4 +1,4 @@
-import {UPDATE_TAGS, SET_TAGS, ADD_TAG, DELETE_TAG} from '@/redux/actions/tags';
+import {UPDATE_TAGS, SET_TAGS, ADD_TAG, DELETE_TAG} from '@/redux/actions/tags'
 
 /**
  * init state

@@ -1,13 +1,13 @@
-import React, {Component} from 'react';
-import MyIcon from '@/components/MyIcon';
-import {Menu, Dropdown, Icon} from 'antd';
-import {connect} from 'react-redux';
-import {withRouter} from 'react-router-dom';
+import React, {Component} from 'react'
+import MyIcon from '@/components/MyIcon'
+import {Menu, Dropdown, Icon} from 'antd'
+import {connect} from 'react-redux'
+import {withRouter} from 'react-router-dom'
 
-import userAvatar from '@/assets/images/avatar.jpeg';
-import {toggleSidebar} from '@/redux/actions/app';
-import ChangeTheme from '@/components/ChangeTheme';
-import ChangeLang from '@/components/ChangeLang';
+import userAvatar from '@/assets/images/avatar.jpeg'
+import {toggleSidebar} from '@/redux/actions/app'
+import ChangeTheme from '@/components/ChangeTheme'
+import ChangeLang from '@/components/ChangeLang'
 
 const mapStateToProps = (state) => {
   return {

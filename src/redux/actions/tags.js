@@ -1,7 +1,7 @@
-export const UPDATE_TAGS = 'tags/UPDATE_TAGS';
-export const SET_TAGS = 'tags/SET_TAGS';
-export const ADD_TAG = 'tags/ADD_TAG';
-export const DELETE_TAG = 'tags/DELETE_TAG';
+export const UPDATE_TAGS = 'tags/UPDATE_TAGS'
+export const SET_TAGS = 'tags/SET_TAGS'
+export const ADD_TAG = 'tags/ADD_TAG'
+export const DELETE_TAG = 'tags/DELETE_TAG'
 
 export function updateTags (tags) {
   return {

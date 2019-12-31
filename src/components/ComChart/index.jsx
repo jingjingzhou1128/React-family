@@ -1,8 +1,8 @@
-import React, {Component} from 'react';
-import * as echarts from 'echarts';
+import React, {Component} from 'react'
+import * as echarts from 'echarts'
 
-import {debounce} from '@/utils/common';
-import './index.scss';
+import {debounce} from '@/utils/common'
+import './index.scss'
 
 class ComChart extends Component {
   constructor (props) {
@@ -66,4 +66,4 @@ class ComChart extends Component {
   }
 }
 
-export default ComChart;
+export default ComChart

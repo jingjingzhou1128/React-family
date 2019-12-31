@@ -1,6 +1,6 @@
-import React, {Component} from 'react';
-import {Menu, Dropdown, Icon} from 'antd';
-import {connect} from 'react-redux';
+import React, {Component} from 'react'
+import {Menu, Dropdown, Icon} from 'antd'
+import {connect} from 'react-redux'
 
 const mapStateToProps = (state) => {
   return {

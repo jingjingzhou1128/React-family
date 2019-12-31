@@ -1,8 +1,8 @@
-import React, {Component} from 'react';
-import { Row, Col } from 'antd';
+import React, {Component} from 'react'
+import { Row, Col } from 'antd'
 
-import MyBreadcrumb from '@/components/MyBreadcrumb';
-import './index.scss';
+import MyBreadcrumb from '@/components/MyBreadcrumb'
+import './index.scss'
 
 export default class GridPage extends Component {
   constructor (props) {

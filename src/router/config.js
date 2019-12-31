@@ -84,6 +84,6 @@ const contentRouterMap = [
       }
     ]
   }
-];
+]
 
-export default contentRouterMap;
+export default contentRouterMap

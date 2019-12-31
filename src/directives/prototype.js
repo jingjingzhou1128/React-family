@@ -1,4 +1,4 @@
-import {message, notification} from 'antd';
+import {message, notification} from 'antd'
 
 /**
  * @author zhoujingjing

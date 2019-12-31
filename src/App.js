@@ -1,12 +1,12 @@
-import React, {Component} from 'react';
-import {HashRouter as Router} from 'react-router-dom';
-import {connect} from 'react-redux';
-import {ConfigProvider} from 'antd';
-import moment from 'moment';
-import 'moment/locale/zh-cn';
+import React, {Component} from 'react'
+import {HashRouter as Router} from 'react-router-dom'
+import {connect} from 'react-redux'
+import {ConfigProvider} from 'antd'
+import moment from 'moment'
+import 'moment/locale/zh-cn'
 
-import antdEnLocale from 'antd/es/locale/en_US';
-import antdZhLocale from 'antd/es/locale/zh_CN';
+import antdEnLocale from 'antd/es/locale/en_US'
+import antdZhLocale from 'antd/es/locale/zh_CN'
 
 import rootRoutes from '@/router'
 

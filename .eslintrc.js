@@ -6,7 +6,7 @@ module.exports = {
     "node": true
   },
   "extends": [
-    "react-app",
+    // "react-app",
     "eslint:recommended"
   ],
   "globals": {},
@@ -26,14 +26,12 @@ module.exports = {
     "react-hooks"
   ],
   "rules": {
-    // "arrow-parens": 0,
-    // "no-undef": 1,
     "no-unused-vars": "off",
     "semi": [2, "never"],
-    "arrow-spacing": [2, { "before": true, "after": true }]
-    // "block-spacing": [2, "always"]
-    // "quotes": [ 1, "single", "avoid-escape" ],
-    // "jsx-quotes": [2, "prefer-double"],
-    // "no-debugger": process.env.NODE_ENV === 'production' ? 2 : 0
+    "arrow-spacing": [2, { "before": true, "after": true }],
+    "func-call-spacing": [2, "never"],
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn",
+    "no-debugger": process.env.NODE_ENV === 'production' ? 2 : 0
   }
 };

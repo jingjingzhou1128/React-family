@@ -1,9 +1,9 @@
-import React, {Component} from 'react';
-import {Breadcrumb} from 'antd';
-import {Link} from 'react-router-dom';
+import React, {Component} from 'react'
+import {Breadcrumb} from 'antd'
+import {Link} from 'react-router-dom'
 
-import MyIcon from '@/components/MyIcon';
-import './index.scss';
+import MyIcon from '@/components/MyIcon'
+import './index.scss'
 
 class MyBreadcrumb extends Component {
   render () {
@@ -51,4 +51,4 @@ class MyBreadcrumb extends Component {
   }
 }
 
-export default MyBreadcrumb;
+export default MyBreadcrumb
