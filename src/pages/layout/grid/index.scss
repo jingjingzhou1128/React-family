@@ -1,0 +1,18 @@
+.ant-row,
+.ant-row-flex {
+  .ant-col {
+    margin-bottom: 20px;
+    > p {
+      text-align: center;
+      color: #fff;
+      height: 50px;
+      line-height: 50px;
+    }
+  }
+  .ant-col:nth-child(even) > p {
+    background-color: $primary;
+  }
+  .ant-col:nth-child(odd) > p {
+    background-color: $success;
+  }
+}

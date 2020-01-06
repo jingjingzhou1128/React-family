@@ -1,0 +1,18 @@
+.login {
+  padding-top: 60px;
+  .form-title {
+    text-align: center;
+    margin: 20px 0;
+    font-weight: 600;
+  }
+  .login-form {
+    width: 400px;
+    margin: 0 auto;
+    .form-btn {
+      text-align: center;
+      .ant-btn {
+        width: 100%;
+      }
+    }
+  }
+}

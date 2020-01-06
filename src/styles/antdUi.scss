@@ -1,0 +1,155 @@
+// 按钮
+#app {
+  .ant-btn {
+    border-radius: 0;
+    color: $grayDarker;
+    background-color: $default;
+    border-color: $grayDark;
+    height: 32px;
+    line-height: 30px;
+    & + .ant-btn {
+      margin-left: 10px;
+    }
+  }
+  // size
+  .ant-btn-mini {
+    height: 24px;
+    line-height: 22px;
+    padding: 0 8px;
+  }
+  .ant-btn-sm {
+    height: 28px;
+    line-height: 26px;
+    padding: 0 12px;
+  }
+  .ant-btn-lg {
+    height: 40px;
+    line-height: 38px;
+  }
+  // type
+  .ant-btn-primary {
+    color: #fff;
+    background-color: $primary;
+    border-color: $primary;
+  }
+  .ant-btn-success {
+    color: #fff;
+    background-color: $success;
+    border-color: $success;
+  }
+  .ant-btn-warning {
+    color: #fff;
+    background-color: $warning;
+    border-color: $warning;
+  }
+  .ant-btn-danger {
+    color: #fff;
+    background-color: $danger;
+    border-color: $danger;
+  }
+  .ant-btn-info {
+    color: $grayDarker;
+    background-color: $info;
+    border-color: $info;
+  }
+  .ant-btn-default {
+    color: $grayDarker;
+    background-color: $default;
+    border-color: $grayDark;
+  }
+  .ant-btn-link {
+    color: $primary;
+    border-color: transparent;
+  }
+  // shape
+  .ant-btn-circle {
+    border-radius: 50%;
+  }
+  .ant-btn-round {
+    border-radius: 32px;
+    &.ant-btn-lg {
+      border-radius: 40px;
+    }
+    &.ant-btn-sm {
+      border-radius: 28px;
+    }
+    &.ant-btn-mini {
+      border-radius: 24px;
+    }
+  }
+  // ghost button
+  .ant-btn-background-ghost {
+    color: #fff;
+    border-color: #fff;
+    background-color: transparent;
+    &.ant-btn-primary {
+      color: $primary;
+      border-color: $primary;
+    }
+    &.ant-btn-danger {
+      color: $danger;
+      border-color: $danger;
+    }
+    &.ant-btn-dashed {
+      border-color: #fff;
+    }
+    &.ant-btn-link {
+      border-color: transparent;
+    }
+  }
+  // disabled
+  .ant-btn[disabled] {
+    background-color: #f5f5f5;
+    border-color: #d9d9d9;
+    color: #b7b7b7;
+  }
+  .ant-btn-link[disabled] {
+    color: #b7b7b7;
+    border-color: transparent;
+    background-color: transparent;
+  }
+  .ant-btn-background-ghost[disabled] {
+    color: #8e9696;
+    background-color: transparent;
+    .ant-btn-primary,
+    .ant-btn-danger {
+      border-color: #d9d9d9;
+    }
+  }
+  // button group
+  .ant-btn-group {
+    .ant-btn + .ant-btn {
+      margin-left: 0;
+    }
+    .ant-btn:not(:first-child) {
+      border-left: none;
+    }
+    .ant-btn:first-child:not(:last-child),
+    .ant-btn:not(:first-child):not(:last-child) {
+      border-right-color: $grayDark;
+    }
+    .ant-btn-primary:first-child:not(:last-child),
+    .ant-btn-primary:not(:first-child):not(:last-child) {
+      border-right-color: #40a9ff;
+    }
+    .ant-btn-danger:first-child:not(:last-child),
+    .ant-btn-danger:not(:first-child):not(:last-child) {
+      border-right-color: #f99494;
+    }
+  }
+  // block button
+  .ant-btn-block + .ant-btn-block {
+    margin-left: 0;
+  }
+}
+
+// 模态框
+.ant-modal {
+  .ant-modal-header {
+    border-bottom: none;
+  }
+  .modal-footer {
+    margin-top: 20px;
+    text-align: right;
+  }
+}
