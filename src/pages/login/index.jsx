@@ -1,5 +1,5 @@
-import React, {Component} from 'react'
-// import {Link} from 'react-router-dom'
+import React, {Component, Fragment} from 'react'
+import {Redirect} from 'react-router-dom'
 import {Form, Input, Button, Checkbox} from 'antd'
 
 import MyIcon from '@/components/MyIcon'
@@ -43,6 +43,8 @@ class Login extends Component {
     event.preventDefault()
     this.props.form.validateFields((err, values) => {
       if (err) return
+      console.log(values.username == 'admin')
+      if (!(values.username == 'admin')) return
       if (values.remember) {
         localStorage.setItem('username', values.username)
         localStorage.setItem('password', compileStr(values.password))
@@ -50,6 +52,13 @@ class Login extends Component {
         localStorage.removeItem('username')
         localStorage.removeItem('password')
       }
+      if (values.username == 'admin') {
+        sessionStorage.setItem('roleKey', 1)
+      } else {
+        sessionStorage.setItem('roleKey', 2)
+      }
+      sessionStorage.setItem('isLogin', 1)
+      sessionStorage.setItem('roleKey', 2)
       this.props.history.push('/home/dashboard')
     })
   }
@@ -70,51 +79,58 @@ class Login extends Component {
   }
 
   render () {
+    const isLogin = !!+sessionStorage.getItem('isLogin')
     const {getFieldDecorator} = this.props.form
     return (
-      <div className="login">
-        <p className="form-title">Login</p>
-        <Form onSubmit={(event) => this.handleSubmit(event)} className="login-form">
-          <Form.Item>
-            {
-              getFieldDecorator('username', {
-                initialValue: this.state.username,
-                rules: [
-                  {required: true, message: 'Please input your username'}
-                ]
-              })(
-                <Input prefix={<MyIcon type="icon-user"/>} placeholder="please input your username"/>
-              )
-            }
-          </Form.Item>
-          <Form.Item>
-            {
-              getFieldDecorator('password', {
-                initialValue: this.state.password,
-                rules: [
-                  {required: true, message: 'Please input your password'}
-                ]
-              })(
-                <Input prefix={<MyIcon type="icon-mima"/>} type="password" placeholder="please input your password"/>
-              )
-            }
-          </Form.Item>
-          <Form.Item>
-            {
-              getFieldDecorator('remember', {
-                valuePropName: 'checked',
-                initialValue: true,
-              })(
-                <Checkbox>Remember me</Checkbox>
-              )
-            }
-          </Form.Item>
-          <Form.Item className="form-btn">
-            <Button type="primary" htmlType="submit">Sign In</Button>
-          </Form.Item>
-        </Form>
-        {/* <Link to="/home/dashboard">Home</Link> */}
-      </div>
+      <Fragment>
+        {
+          !isLogin ? 
+          <div className="login">
+            <p className="form-title">Login</p>
+            <Form onSubmit={(event) => this.handleSubmit(event)} className="login-form">
+              <Form.Item>
+                {
+                  getFieldDecorator('username', {
+                    initialValue: this.state.username,
+                    rules: [
+                      {required: true, message: 'Please input your username'}
+                    ]
+                  })(
+                    <Input prefix={<MyIcon type="icon-user"/>} placeholder="please input your username"/>
+                  )
+                }
+              </Form.Item>
+              <Form.Item>
+                {
+                  getFieldDecorator('password', {
+                    initialValue: this.state.password,
+                    rules: [
+                      {required: true, message: 'Please input your password'}
+                    ]
+                  })(
+                    <Input prefix={<MyIcon type="icon-mima"/>} type="password" placeholder="please input your password"/>
+                  )
+                }
+              </Form.Item>
+              <Form.Item>
+                {
+                  getFieldDecorator('remember', {
+                    valuePropName: 'checked',
+                    initialValue: true,
+                  })(
+                    <Checkbox>Remember me</Checkbox>
+                  )
+                }
+              </Form.Item>
+              <Form.Item className="form-btn">
+                <Button type="primary" htmlType="submit">Sign In</Button>
+              </Form.Item>
+            </Form>
+            {/* <Link to="/home/dashboard">Home</Link> */}
+          </div> : 
+          <Redirect to="/home/dashboard"/>
+        }
+      </Fragment>
     )
   }
 }

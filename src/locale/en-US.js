@@ -10,7 +10,9 @@ export default {
       button: 'Button',
       typography: 'Typography',
       layout: 'Layout',
-      grid: 'Grid'
+      grid: 'Grid',
+      tourist: 'Tourist',
+      admin: 'Admin'
     },
     user: {
       profile: 'Profile',

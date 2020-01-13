@@ -1,5 +1,10 @@
 import {asyncComponent} from '@/utils/asyncComponent'
 
+const ROLES = {
+  admin: 1,
+  tourist: 2
+}
+
 const contentRouterMap = [
   {
     path: '/home/dashboard',
@@ -10,6 +15,7 @@ const contentRouterMap = [
       title: 'dashboard',
       affixTag: true
     },
+    // component: import('@/pages/dashboard')
     component: asyncComponent(() => import('@/pages/dashboard'))
   },
   {
@@ -19,8 +25,26 @@ const contentRouterMap = [
       icon: 'icon-shezhi',
       title: 'permission'
     },
-    component: asyncComponent(() => import('@/pages/permission'))
+    children: [
+      {
+        path: '/home/permission/admin',
+        meta: {
+          title: 'admin',
+          roleKey: [ROLES.admin]
+        },
+        component: asyncComponent(() => import('@/pages/permission/admin'))
+      },
+      {
+        path: '/home/permission/tourist',
+        meta: {
+          title: 'tourist',
+          roleKey: [ROLES.admin, ROLES.tourist]
+        },
+        component: asyncComponent(() => import('@/pages/permission/tourist'))
+      }
+    ]
   },
+
   // {
   //   path: '/home/nest',
   //   meta: {
@@ -45,6 +69,7 @@ const contentRouterMap = [
   //     }
   //   ]
   // },
+
   {
     path: '/home/ui',
     meta: {

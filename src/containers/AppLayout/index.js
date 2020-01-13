@@ -1,4 +1,5 @@
-import React, {Component} from 'react'
+import React, {Component, Fragment} from 'react'
+import {Redirect} from 'react-router-dom'
 import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
 import {Layout} from 'antd'
@@ -32,6 +33,46 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(closeSidebar())
     }
   }
+}
+
+function getPermissionMenu (menus) {
+  const roles = sessionStorage.getItem('roleKey')
+  let filterMenus = []
+  for (let index in menus) {
+    if (menus[index].meta && menus[index].meta.roleKey && menus[index].meta.roleKey.indexOf(Number(roles)) < 0) {
+      continue
+    }
+    if (menus[index].children) {
+      filterMenus.push({
+        ...menus[index],
+        children: getPermissionMenu(menus[index].children)
+      })
+    } else {
+      filterMenus.push(menus[index])
+    }
+    // if (!menus[index].meta || !menus[index].meta.roleKey) {
+    //   filterMenus.push(menus[index])
+    //   console.log(1)
+    //   continue
+    // }
+    // if (menus[index].meta.roleKey.indexOf(roles) < 0 || !menus[index].children) {
+    //   console.log(2)
+    //   continue
+    // }
+    // if (menus[index].meta.roleKey.indexOf(roles) > -1 && !menus[index].children) {
+    //   console.log(3)
+    //   filterMenus.push(menus[index])
+    //   continue
+    // }
+    // if (menus[index].meta.roleKey.indexOf(roles) > -1 && menus[index].children) {
+    //   console.log(4)
+    //   filterMenus.push({
+    //     ...menus[index],
+    //     children: getPermissionMenu(menus[index].children)
+    //   })
+    // }
+  }
+  return filterMenus
 }
 
 class AppLayout extends Component {
@@ -78,7 +119,7 @@ class AppLayout extends Component {
   componentDidUpdate (oldProps) {
     this.nprogressDone()
     if (this.props.location.pathname === oldProps.location.pathname) return
-    this.props.closeSidebar()
+    this.resizeWindow()
   }
 
   componentWillUnmount () {
@@ -90,31 +131,39 @@ class AppLayout extends Component {
   }
 
   render () {
+    const isLogin = !!+sessionStorage.getItem('isLogin')
     this.nprogressStart()
     const collapsed = this.props.collapsed
+    const menus = getPermissionMenu(contentRouterMap)
     return (
-      <Layout id="app">
+      <Fragment>
         {
-          this.props.device === 'mobile' && !collapsed ? (
-            <div className="backstage" onClick={() => {this.props.closeSidebar()}}></div>
-          ) : null
-        }
-        <Sider trigger={null} collapsible collapsed={collapsed} className={`sidebar ${this.props.device}`}>
-          {/* <div className="logo">Logo</div> */}
-          <Sidebar menus={contentRouterMap}/>
-        </Sider>
-        <Layout>
-          <Header className="app-header">
-            <Navbar/>
-            <MyTags/>
-          </Header>
-          <Content className="app-main">
+          isLogin ? 
+          <Layout id="app">
             {
-              contentRoutes
+              this.props.device === 'mobile' && !collapsed ? (
+                <div className="backstage" onClick={() => {this.props.closeSidebar()}}></div>
+              ) : null
             }
-          </Content>
-        </Layout>
-      </Layout>
+            <Sider trigger={null} collapsible collapsed={collapsed} className={`sidebar ${this.props.device}`}>
+              {/* <div className="logo">Logo</div> */}
+              <Sidebar menus={menus}/>
+            </Sider>
+            <Layout>
+              <Header className="app-header">
+                <Navbar/>
+                <MyTags/>
+              </Header>
+              <Content className="app-main">
+                {
+                  contentRoutes
+                }
+              </Content>
+            </Layout>
+          </Layout> : 
+          <Redirect to="/login"/>
+        }
+      </Fragment>
     )
   }
 }

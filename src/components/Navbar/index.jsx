@@ -25,6 +25,8 @@ const mapDispatchToProps = (dispatch) => {
 
 class Navbar extends Component {
   logout () {
+    sessionStorage.removeItem('isLogin')
+    sessionStorage.removeItem('roleKey')
     this.props.history.push('/login')
   }
   
