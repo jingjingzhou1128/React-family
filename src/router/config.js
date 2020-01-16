@@ -1,9 +1,5 @@
 import {asyncComponent} from '@/utils/asyncComponent'
-
-const ROLES = {
-  admin: 1,
-  tourist: 2
-}
+import {ROLES} from '@/utils/common'
 
 const contentRouterMap = [
   {

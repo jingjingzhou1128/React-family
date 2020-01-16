@@ -32,3 +32,8 @@ export function debounce (fn, interval = 500) {
     }, interval)
   }
 }
+
+export const ROLES = {
+  admin: 1,
+  tourist: 2
+}
