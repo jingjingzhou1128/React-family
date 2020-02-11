@@ -13,6 +13,7 @@ import './index.scss'
 import {contentRoutes} from '@/router'
 import contentRouterMap from '@/router/config'
 import {debounce} from '@/utils/common'
+import {getPermissionMenu, getIsLogin} from '@/utils/permission'
 import {setDevice, closeSidebar} from '@/redux/actions/app'
 
 const {Sider, Header, Content} = Layout
@@ -35,50 +36,11 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-function getPermissionMenu (menus) {
-  const roles = sessionStorage.getItem('roleKey')
-  let filterMenus = []
-  for (let index in menus) {
-    if (menus[index].meta && menus[index].meta.roleKey && menus[index].meta.roleKey.indexOf(Number(roles)) < 0) {
-      continue
-    }
-    if (menus[index].children) {
-      filterMenus.push({
-        ...menus[index],
-        children: getPermissionMenu(menus[index].children)
-      })
-    } else {
-      filterMenus.push(menus[index])
-    }
-    // if (!menus[index].meta || !menus[index].meta.roleKey) {
-    //   filterMenus.push(menus[index])
-    //   console.log(1)
-    //   continue
-    // }
-    // if (menus[index].meta.roleKey.indexOf(roles) < 0 || !menus[index].children) {
-    //   console.log(2)
-    //   continue
-    // }
-    // if (menus[index].meta.roleKey.indexOf(roles) > -1 && !menus[index].children) {
-    //   console.log(3)
-    //   filterMenus.push(menus[index])
-    //   continue
-    // }
-    // if (menus[index].meta.roleKey.indexOf(roles) > -1 && menus[index].children) {
-    //   console.log(4)
-    //   filterMenus.push({
-    //     ...menus[index],
-    //     children: getPermissionMenu(menus[index].children)
-    //   })
-    // }
-  }
-  return filterMenus
-}
-
 class AppLayout extends Component {
   constructor (props) {
     super(props)
     this.__resizeHandler = debounce(this.resizeWindow.bind(this))
+    getIsLogin()
   }
 
   nprogressStart () {
@@ -131,7 +93,7 @@ class AppLayout extends Component {
   }
 
   render () {
-    const isLogin = !!+sessionStorage.getItem('isLogin')
+    const isLogin = !!+localStorage.getItem('isLogin')
     this.nprogressStart()
     const collapsed = this.props.collapsed
     const menus = getPermissionMenu(contentRouterMap)

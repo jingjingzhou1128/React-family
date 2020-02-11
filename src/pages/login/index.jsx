@@ -3,6 +3,8 @@ import {Redirect} from 'react-router-dom'
 import {Form, Input, Button, Checkbox} from 'antd'
 
 import MyIcon from '@/components/MyIcon'
+import {ROLES} from '@/utils/common'
+import {getIsLogin} from '@/utils/permission'
 import './index.scss'
 
 // 字符串加密
@@ -37,14 +39,22 @@ class Login extends Component {
       username: '',
       password: ''
     }
+    getIsLogin()
   }
+
+
 
   handleSubmit (event) {
     event.preventDefault()
     this.props.form.validateFields((err, values) => {
       if (err) return
-      console.log(values.username == 'admin')
-      if (!(values.username == 'admin')) return
+      if (!((values.username === 'admin' || values.username === 'guest') && values.password === '123456')) {
+        window.notificationError({
+          msg: 'Error',
+          desc: 'Username or Password is not correctly'
+        })
+        return
+      }
       if (values.remember) {
         localStorage.setItem('username', values.username)
         localStorage.setItem('password', compileStr(values.password))
@@ -52,13 +62,8 @@ class Login extends Component {
         localStorage.removeItem('username')
         localStorage.removeItem('password')
       }
-      if (values.username == 'admin') {
-        sessionStorage.setItem('roleKey', 1)
-      } else {
-        sessionStorage.setItem('roleKey', 2)
-      }
-      sessionStorage.setItem('isLogin', 1)
-      sessionStorage.setItem('roleKey', 2)
+      localStorage.setItem('roleKey', values.username === 'admin' ? ROLES.admin : ROLES.tourist)
+      localStorage.setItem('isLogin', 1)
       this.props.history.push('/home/dashboard')
     })
   }
@@ -79,7 +84,7 @@ class Login extends Component {
   }
 
   render () {
-    const isLogin = !!+sessionStorage.getItem('isLogin')
+    const isLogin = !!+localStorage.getItem('isLogin')
     const {getFieldDecorator} = this.props.form
     return (
       <Fragment>
@@ -126,7 +131,16 @@ class Login extends Component {
                 <Button type="primary" htmlType="submit">Sign In</Button>
               </Form.Item>
             </Form>
-            {/* <Link to="/home/dashboard">Home</Link> */}
+            <ul className="account-info">
+              <li>
+                <span>Admin</span>
+                <span>Username: admin,Password：123456</span>
+              </li>
+              <li>
+                <span>Tourist</span>
+                <span>Username: guest,Password: 123456</span>
+              </li>
+            </ul>
           </div> : 
           <Redirect to="/home/dashboard"/>
         }

@@ -15,4 +15,13 @@
       }
     }
   }
+  .account-info {
+    width: 400px;
+    margin: 0 auto;
+    li {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+  }
 }
